@@ -1,10 +1,13 @@
 import React from 'react';
-
-const s = require('./Header.modules.css');
+import Language from './Language/Language';
+import FormPropsTextFields from './Search/Search';
+import Login from './Login/Login.module';
+import HeaderComp from './HeaderComponents'
 
 const Header: React.FC = () => (
-  <div className={s.header}>
-    header
-  </div>
-)
+    <HeaderComp>
+      <Language />
+      <FormPropsTextFields />
+      <Login />
+    </HeaderComp>);
 export default Header;
