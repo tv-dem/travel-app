@@ -17,27 +17,19 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Language:React.FC = () => {
+const Language:React.FC = ({languages, selectedLanguage, onSelectLanguage}:any) => {
   const classes = useStyles();
-  const [age, setAge] = React.useState('Русский');
-
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setAge(event.target.value as string);
-  };
-
   return (
     <div>
       <FormControl className={classes.formControl}>
         <Select
-          value={age}
-          onChange={handleChange}
+          value={selectedLanguage.lan}
+          onChange={onSelectLanguage}
           displayEmpty
           className={classes.selectEmpty}
           inputProps={{ 'aria-label': 'Without label' }}
         >
-          <MenuItem value='Русский'>Русский</MenuItem>
-          <MenuItem value='English'>English</MenuItem>
-          <MenuItem value='Deutch'>Deutch</MenuItem>
+          {languages.map(({val, lan}: any) => <MenuItem value={lan}>{val}</MenuItem>)}
         </Select>
         <FormHelperText>set language</FormHelperText>
       </FormControl>

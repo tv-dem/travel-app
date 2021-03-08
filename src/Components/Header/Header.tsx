@@ -1,13 +1,13 @@
 import React from 'react';
-import Language from './Language/Language';
-import FormPropsTextFields from './Search/Search';
 import Login from './Login/Login.module';
 import HeaderComp from './HeaderComponents'
+import SearchContainer from './Search/SearchContainer';
+import LanguageContainer from './Language/LanguageContainer';
 
 const Header: React.FC = () => (
     <HeaderComp>
-      <Language />
-      <FormPropsTextFields />
+      <LanguageContainer />
+      <SearchContainer />
       <Login />
     </HeaderComp>);
 export default Header;
