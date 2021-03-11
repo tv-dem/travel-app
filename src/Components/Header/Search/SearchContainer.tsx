@@ -3,11 +3,9 @@ import { connect } from 'react-redux';
 import changeInputFieldAC from '../../../Redux/MainPage/actions';
 import Search from './Search';
 
-const mapStateToProps = (state:any) => {
-  console.log(state);
-  return {
+const mapStateToProps = (state:any) => ({
   input: state.mainPage.input,
-}};
+});
 
 const mapDispatchToProps = (dispatch: any) => ({
   onChangeInput: ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
