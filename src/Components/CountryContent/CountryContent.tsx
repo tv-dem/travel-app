@@ -1,9 +1,11 @@
 import React from 'react';
-import {
-  RouteComponentProps
-} from "react-router-dom";
+import { Redirect, useParams } from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import CountryTabs from './CountryTabs/CountryTabs';
+// import DateWidget from '../DateWidget/DateWidget';
+import COUNTRIES from '../../Data/CountriesData';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -13,10 +15,20 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'row',
       display: 'flex',
     },
-    paper_country: {
+    text_field: {
+      '& > *': {
+        margin: theme.spacing(2),
+        width: '100%',
+      },
+    },
+    country_box: {
       width: '80%',
+      margin: '10px ',
+    },
+    paper_country: {
+      width: '100%',
       padding: theme.spacing(2),
-      margin: '10px 0',
+      marginBottom: '10px',
     },
     paper_widgets: {
       width: '20%',
@@ -33,10 +45,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     map: {
       width: 300,
-      height: 300,
     },
-    about_country: {},
+    about_country: {
+      width: '90%',
+    },
     name_country: {},
+    name_capital: {},
     country_description: {},
     widgets: {
       width: '20%',
@@ -50,28 +64,47 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+type TParams = { id: string };
 
-type TParams = { country: string,
- 
-};
-
-const CountryContent = ({ match }: RouteComponentProps<TParams>) => {
+const CountryContent = () => {
   const classes = useStyles();
+
+  const id: TParams = useParams();
+
+  const index = COUNTRIES.findIndex(country => country.id === id.id);
+
+  if (index === -1) return <Redirect to="/" />;
+  const country = COUNTRIES[Number(index)];
 
   return (
     <div className={classes.root}>
-      <Paper className={classes.paper_country}>
-        <div className={classes.main_content}>
-          <div className={classes.map}>map</div>
-          <div className={classes.about_country}>
-            <div className={classes.name_country}>{match.params.country}</div>
-            <div className={classes.country_description}>descriptions</div>
+      <div className={classes.country_box}>
+        <Paper className={classes.paper_country}>
+          <div className={classes.main_content}>
+            <div className={classes.map}>map</div>
+            <div className={classes.about_country}>
+              <div className={classes.name_country}>{country.country}</div>
+              <div className={classes.name_capital}>{country.capital}</div>
+              <div className={classes.text_field}>
+                <TextField
+                  id="standard-read-only-input"
+                  label="Descriptions"
+                  defaultValue={country.descriptions}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </div>
           </div>
-        </div>
-        <div className={classes.tabs}>Tabs</div>
-      </Paper>
+        </Paper>
+
+        <Paper className={classes.tabs}>
+          <CountryTabs />
+        </Paper>
+      </div>
       <Paper className={classes.paper_widgets}>
-        <div className={classes.widgets}>widgets</div>
+        <div className={classes.widgets}>{/* <DateWidget /> */}</div>
       </Paper>
     </div>
   );

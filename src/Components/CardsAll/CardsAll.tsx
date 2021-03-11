@@ -13,7 +13,7 @@ const CardsAll: React.FC<CountryType> = () => (
   <CardsAllComponent>
     {COUNTRIES.map(
       (e): JSX.Element => (        
-        <Link className="card-item" key={e.id} to={`/${e.country}`}>          
+        <Link className="card-item" key={e.id} to={`/country/${e.id}`}>          
           <CountryCard  id={e.id} country={e.country} capital={e.capital} descriptions={e.descriptions} />
         </Link>    
       ),
