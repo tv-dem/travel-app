@@ -67,6 +67,7 @@ const useStyles = makeStyles((theme: Theme) =>
 type TParams = { id: string };
 
 const CountryContent = ({ countries }: any) => {
+
   const classes = useStyles();
 
   const id: TParams = useParams();

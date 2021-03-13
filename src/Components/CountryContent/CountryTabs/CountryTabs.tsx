@@ -21,7 +21,7 @@ function TabPanel(props: TabPanelProps) {
       hidden={value !== index}
       id={`a11y-tabpanel-${index}`}
       aria-labelledby={`a11y-tab-${index}`}
-     
+
     >
       {value === index && (
         <Box p={1}>
@@ -46,9 +46,9 @@ function TabsPanel(props: TabsProps) {
   return (
     <AppBar position="static" color="default">
       <Tabs
-    indicatorColor="primary"
-    textColor="primary"
-   
+        indicatorColor="primary"
+        textColor="primary"
+
         aria-labelledby={labelId}
         onChange={onChange}
         selectionFollowsFocus={selectionFollowsFocus}
@@ -65,11 +65,11 @@ function TabsPanel(props: TabsProps) {
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-   
+
   },
 });
 
-export default function AccessibleTabs() {
+export default function AccessibleTabs(): JSX.Element {
   const classes = useStyles();
 
   const [value, setValue] = React.useState(0);
@@ -80,21 +80,21 @@ export default function AccessibleTabs() {
 
   return (
     <div className={classes.root}>
-     
+
       <TabsPanel
-     
+
         labelId="demo-a11y-tabs-automatic-label"
         selectionFollowsFocus
         onChange={handleChange}
         value={value}
       />
-     
-      
+
+
       <TabPanel value={value} index={0}>
-      Photo gallery
+        Photo gallery
       </TabPanel>
       <TabPanel value={value} index={1}>
-       Video
+        Video
       </TabPanel>
       <TabPanel value={value} index={2}>
         ...
