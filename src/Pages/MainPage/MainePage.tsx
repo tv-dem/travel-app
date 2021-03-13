@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import Video from '../../Components/Video/Video';
+import Map from '../../Components/Map/Map';
 
 const MainPage: React.FC = () => (<>
     <Header />
-    <Video />
+    <Map />
     <Footer />
   </>
 );

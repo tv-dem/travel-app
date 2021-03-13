@@ -1,0 +1,33 @@
+.map-container{
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 0 10px gray;
+  border-radius: 10px;
+  transition: height, width .3s ease-in;
+  &_full{
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    position: absolute;
+  }
+}
+.map-container-wrapper{
+  position: relative;
+  height: 300px;
+  width: 500px;
+}
+.full-screen{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 999;
+}
+
+.full-map-btn-close{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1001;
+}
