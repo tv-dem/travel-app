@@ -16,6 +16,7 @@
     "@types/react-router": "^5.1.12",
     "fontsource-roboto": "^4.0.0",
     "leaflet": "^1.7.1",
+    "moment-timezone": "^0.5.33",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-css-modules": "^4.7.11",
@@ -58,6 +59,7 @@
   "devDependencies": {
     "@types/leaflet": "^1.5.23",
     "@types/react-redux": "^7.1.16",
+    "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.4.1",
     "@typescript-eslint/parser": "^4.15.2",
