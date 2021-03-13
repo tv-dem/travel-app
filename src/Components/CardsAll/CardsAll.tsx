@@ -1,24 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import CardsAllComponent from './CardsAllComponent';
-import CountryCard from '../CountryCard/CountryCard';
-import COUNTRIES from '../../Data/CountriesData'
-import {CountryType} from '../../Data/CountryType'
-import './CardsAll.scss'
+import CountryCardContainer from '../CountryCard/CountryCardContainer';
+import CountryType from './CountryType'
+import './CardsAll.scss';
+
+const CardsAll: React.FC<CountryType> = (props: any) => {
+  const { countries, error, pending, fetchCountries } = props;
+
+  console.log(countries);
 
 
-const CardsAll: React.FC<CountryType> = () => (
+  useEffect(() => fetchCountries(), [fetchCountries]);
 
-  <CardsAllComponent>
-    {COUNTRIES.map(
-      (e): JSX.Element => (        
-        <Link className="card-item" key={e.id} to={`/country/${e.id}`}>          
-          <CountryCard  id={e.id} country={e.country} capital={e.capital} descriptions={e.descriptions} />
-        </Link>    
-      ),
-    )}
-  </CardsAllComponent>
-);
+  return (
+    <CardsAllComponent>
+      {pending ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          {error && <span className="product-list-error">{error}</span>}
+          {countries.map(
+            (e: any) => (
+              <Link className="card-item" key={e.id} to={`/country/${e.id}`}>
+                <CountryCardContainer />
+              </Link>
+            ),
+          )}
+        </>
+      )}
+    </CardsAllComponent>
+  );
+};
 
 export default CardsAll;
