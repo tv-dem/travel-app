@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type TParams = { id: string };
 
-const CountryContent = () => {
+const CountryContent = (): JSX.Element => {
   const classes = useStyles();
 
   const id: TParams = useParams();
