@@ -1,5 +1,4 @@
 import React from 'react';
-import {  useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -7,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 import Typography from '@material-ui/core/Typography';
 import './CountryCard.scss';
-import CountryType from '../CardsAll/CountryType'
+import {CountryCardProps} from '../CardsAll/CountryType'
 
 const useStyles = makeStyles({
   root: {
@@ -20,29 +19,17 @@ const useStyles = makeStyles({
   },
 });
 
-type TParams = { id: string };
 
-const CountryCard: React.FC = ( {countries}:any) => {
+const CountryCard: React.FC<CountryCardProps> = ( {country} ) => {
   
   const classes = useStyles();
-
- 
-
-  const id: TParams = useParams();
-console.log(id.id)
-//   const index = countries.findIndex((country:CountryType) => country.id === id.id);
-
-//   if (index === -1) return <Redirect to="/" />;
-
-  const country:CountryType = countries[2];
-
-
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <img
-          className={classes.media}        
+          className={classes.media}     
+          height="140"   
           alt=""  
           src={country.imageUrl}         
           title={country.localizations[0].name}

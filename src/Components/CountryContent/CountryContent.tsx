@@ -1,11 +1,11 @@
 import React from 'react';
-
+import { Redirect, useParams } from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import CountryTabs from './CountryTabs/CountryTabs';
+import { CountryType } from '../CardsAll/CountryType';
 // import DateWidget from '../DateWidget/DateWidget';
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -64,17 +64,20 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-// type TParams = { id: string };
+type TParams = { id: string };
 
-const CountryContent = () => {
+const CountryContent = ({ countries }: any) => {
   const classes = useStyles();
 
-  // const id: TParams = useParams();
+  const id: TParams = useParams();
 
-  // const index = COUNTRIES.findIndex(country => country.id === id.id);
+  if (countries === undefined) return <></>;
 
-  // if (index === -1) return <Redirect to="/" />;
-  // const country = COUNTRIES[Number(index)];
+  const index = countries.findIndex((item: CountryType) => item.id === id.id);
+
+  if (index === -1) return <Redirect to="/" />;
+
+  const country: CountryType = countries[Number(index)];
 
   return (
     <div className={classes.root}>
@@ -83,13 +86,18 @@ const CountryContent = () => {
           <div className={classes.main_content}>
             <div className={classes.map}>map</div>
             <div className={classes.about_country}>
-              <div className={classes.name_country}>Country</div>
-              <div className={classes.name_capital}>Capital</div>
+              <div className={classes.name_country}>
+                {country.localizations[0].name}
+              </div>
+              <div className={classes.name_capital}>
+                {country.localizations[0].capital}
+              </div>
               <div className={classes.text_field}>
                 <TextField
                   id="standard-read-only-input"
                   label="Descriptions"
-                  defaultValue="descriptions"
+                  multiline
+                  defaultValue={country.localizations[0].description}
                   InputProps={{
                     readOnly: true,
                   }}
