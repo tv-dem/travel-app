@@ -98,7 +98,7 @@ const SignInPage: React.FC = () => {
           type="text"
           placeholder="Enter E-mail"
           name="email"
-          autocomplete="email"
+          autoComplete="on"
           onChange={changeEmail}
         />
         <FormField>
@@ -106,7 +106,7 @@ const SignInPage: React.FC = () => {
             type={isOpenPassword ? "text" : "password"}
             placeholder="Password"
             name="password"
-            autocomplete="new-password"
+            autoComplete="on"
             onChange={handleSetNewPassword}
           />
           <TogglePassword onClick={toggleVisiblePassword} />

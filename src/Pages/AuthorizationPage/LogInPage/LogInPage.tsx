@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Form, InputText, FormField, TogglePassword, InputBtnSignIn } from '../../../Components/styledComponents';
@@ -27,41 +27,30 @@ interface LogInPageProps {
   // toggleEnterUser: (value: boolean) => void;
 }
 
-interface LogInPageState {
-  email: string;
-  password: string;
-  isOpenPassword: boolean;
-}
+const LogInPage: React.FC<LogInPageProps> = ({ onToggleErrorComponent }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isShow, setShow] = useState(false);
 
-export default class LogInPage extends React.Component<LogInPageProps, LogInPageState> {
-  constructor(props: LogInPageProps) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      isOpenPassword: false,
-    };
-  }
+  const toggleVisiblePassword = (): void => {
+    setShow((state) => (!state));
+  };
 
-  toggleVisiblePassword = (): void => {
-    this.setState(({ isOpenPassword }) => ({
-      'isOpenPassword': !isOpenPassword,
-    }));
-  }
-
-  handleChangeInput = ({ target: { value, id } }: React.ChangeEvent<HTMLInputElement>): void => {
-    const { onToggleErrorComponent } = this.props;
-    this.setState({
-      [id]: value,
-    });
+  const handleChangeInputPassword = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
+    setPassword(target.value);
     onToggleErrorComponent(false);
-  }
+  };
 
-  logInAccount = (event: React.ChangeEvent<HTMLFormElement>): void => {
+  const handleChangeInputEmail = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
+    setEmail(target.value);
+    onToggleErrorComponent(false);
+  };
+
+  const logInAccount = (event: React.ChangeEvent<HTMLFormElement>): void => {
     event.preventDefault();
-  }
+  };
 
-  toggleChecked = (): void => {
+  const toggleChecked = (): void => {
     console.log(1);
   };
 
@@ -72,60 +61,59 @@ export default class LogInPage extends React.Component<LogInPageProps, LogInPage
   //   });
   // }
 
-  render(): JSX.Element {
-    const { isOpenPassword, email, password } = this.state;
-    return (
-      <Form onSubmit={this.logInAccount}>
-        <FormField>
-          <InputText
-            tabIndex="0"
-            id="email"
-            name="username"
-            placeholder="E-mail"
-            type="text"
-            autocomplete="off"
-            onChange={this.handleChangeInput}
-            value={email}
-          />
-        </FormField>
-        <FormField>
-          <InputPassword
-            tabIndex="0"
-            id="password"
-            name="password"
-            placeholder="Password"
-            type={isOpenPassword ? "text" : "password"}
-            autocomplete="off"
-            onChange={this.handleChangeInput}
-            value={password}
-          />
-          <TogglePassword
-            onClick={this.toggleVisiblePassword}
-          />
-        </FormField>
-        <FormOptions>
-          <div>
-            <label htmlFor="rememberMe">
-              <input
-                tabIndex="0"
-                id="rememberMe"
-                name="rememberMe"
-                type="checkbox"
-                checked
-                onChange={this.toggleChecked}
-              />
+  return (
+    <Form onSubmit={logInAccount}>
+      <FormField>
+        <InputText
+          tab-index="0"
+          id="email"
+          name="username"
+          placeholder="E-mail"
+          type="text"
+          autoComplete="off"
+          onChange={handleChangeInputEmail}
+          value={email}
+        />
+      </FormField>
+      <FormField>
+        <InputPassword
+          tab-index="0"
+          id="password"
+          name="password"
+          placeholder="Password"
+          type={isShow ? "text" : "password"}
+          autoComplete="off"
+          onChange={handleChangeInputPassword}
+          value={password}
+        />
+        <TogglePassword
+          onClick={toggleVisiblePassword}
+        />
+      </FormField>
+      <FormOptions>
+        <div>
+          <label htmlFor="rememberMe">
+            <input
+              tab-index="0"
+              id="rememberMe"
+              name="rememberMe"
+              type="checkbox"
+              checked
+              onChange={toggleChecked}
+            />
               Remember Me
             </label>
-          </div>
-          <NavLink to="/reset">Forgot password?</NavLink>
-          <InputBtnSignIn
-            tabIndex="0"
-            type="submit"
-            value="LogIn"
-            name="login"
-          />
-        </FormOptions>
-      </Form>
-    );
-  }
+        </div>
+        <NavLink to="/reset">Forgot password?</NavLink>
+        <InputBtnSignIn
+          tab-index="0"
+          type="submit"
+          value="LogIn"
+          name="login"
+        />
+      </FormOptions>
+    </Form>
+  );
 };
+
+export default LogInPage;
