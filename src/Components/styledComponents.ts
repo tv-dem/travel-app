@@ -293,3 +293,19 @@ export const ContentWrapper = styled.div`
     padding: 0 16px 16px 16px;
   }
 `;
+
+export const ButtonSave = styled.button`
+  background-color: #1b8dfb;
+  height: 48px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 20px;
+  border-radius: 2px;
+  margin-right: 8px;
+  border: none;
+  color: #fff;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  background-clip: padding-box;
+`;
