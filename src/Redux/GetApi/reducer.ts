@@ -10,7 +10,7 @@ const initialState: stateType = {
 }
 
 export function countriesReducer(state = initialState, action: any): stateType {
-console.log(state)
+
     switch (action.type) {
         case FETCH_COUNTRIES_PENDING:
             return {
