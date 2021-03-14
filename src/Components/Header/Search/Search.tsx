@@ -7,7 +7,10 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       '& .MuiTextField-root': {
         margin: theme.spacing(1),
-        width: '50ch',
+        width: '30ch',
+        [theme.breakpoints.up('sm')]: {
+          width: '50ch',
+        },
       },
     },
   }),

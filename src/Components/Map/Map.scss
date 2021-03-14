@@ -5,18 +5,20 @@
   border-radius: 10px;
   transition: height, width .3s ease-in;
   &_full{
+    position: fixed;
     height: 100vh;
     width: 100vw;
     top: 0;
     left: 0;
     z-index: 1000;
-    position: absolute;
   }
+}
+.map-container_full body {
 }
 .map-container-wrapper{
   position: relative;
   width: 100%;
-  height: 80%;
+  height: 100%;
 }
 .full-screen{
   position: absolute;
@@ -27,7 +29,7 @@
 
 .full-map-btn-close{
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 10px;
   z-index: 1001;
 }
