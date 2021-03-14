@@ -29,7 +29,7 @@ const Language:React.FC = ({languages, selectedLanguage, onSelectLanguage}:any) 
           className={classes.selectEmpty}
           inputProps={{ 'aria-label': 'Without label' }}
         >
-          {languages.map(({val, lan}: any) => <MenuItem value={lan}>{val}</MenuItem>)}
+          {languages.map(({val, lan}: any) => <MenuItem key={val} value={lan}>{val}</MenuItem>)}
         </Select>
         <FormHelperText>set language</FormHelperText>
       </FormControl>

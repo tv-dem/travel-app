@@ -10,6 +10,7 @@ const Footer: React.FC = () => (
       <li><a href="https://github.com/tv-dem">tv-dem</a></li>
       <li><a href="https://github.com/funfordima">funfordima</a></li>
     </ul>
+    <div className="footer__year">2021</div>
     <div className="footer__rs-link"><a href="https://rs.school/">RsSchool</a></div>
   </FooterComp>);
 export default Footer;

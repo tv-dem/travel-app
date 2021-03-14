@@ -1,5 +1,7 @@
 export type stateType = {   
         pending: boolean,
         countries: Array<any>,
-        error: null|string   
+        countriesFind: Array<any>,
+        error: null|string ,
+        currentCountry:null|any
   }

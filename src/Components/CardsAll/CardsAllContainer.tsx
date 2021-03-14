@@ -4,22 +4,31 @@ import {
   fetchCountriesPending,
   fetchCountriesSuccess,
   fetchCountriesError,
+  filterCountries,
+  setCurrentCountry,
 } from '../../Redux/GetApi/actions';
 import {
   getCountries,
   getCountriesPending,
   getCountriesError,
+  getCountriesFilter,
 } from '../../Redux/GetApi/reducer';
+import { CountryType } from './CountryType';
 
 const MAIN_URL = 'https://api-travel-app.herokuapp.com/countries';
 
 const mapStateToProps = (state: any) => ({
+  input: state.mainPage.input,
   error: getCountriesError(state.getCountries),
   countries: getCountries(state.getCountries),
+  countriesSearch: getCountriesFilter(state.getCountries),
   pending: getCountriesPending(state.getCountries),
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
+  setCurrentCountry: (country: CountryType) =>
+    dispatch(setCurrentCountry(country)),
+  filterCountries: (input: string) => dispatch(filterCountries(input)),
   fetchCountries: () => {
     dispatch(fetchCountriesPending());
     fetch(MAIN_URL)

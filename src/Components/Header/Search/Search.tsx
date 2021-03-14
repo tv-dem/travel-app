@@ -17,15 +17,19 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const Search:React.FC = ({input, onChangeInput}:any) => {
+
   const classes = useStyles();
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <div>
         <TextField
+          autoFocus
+          type="search"          
           onChange={onChangeInput}
           value={input}
           id="standard-password-input"
           label="search country..."
+          variant="standard"         
         />
       </div>
     </form>

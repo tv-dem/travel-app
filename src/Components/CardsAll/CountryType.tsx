@@ -23,8 +23,7 @@ export type CountryType = {
   _id: string;
 };
 
-export type CountryCardProps = {
+ export type CountryCardProps = {
   country: CountryType;
 };
-
 

@@ -1,11 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import { Redirect, useParams } from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import CountryTabs from './CountryTabs/CountryTabs';
-import { CountryType } from '../CardsAll/CountryType';
-import Map from '../Map/Map'
+
+import Map from '../Map/Map';
 import DateWidgetContainer from '../DateWidget/DateWidgetContainer';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -29,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     country_box: {
-      width: '100%'
+      width: '100%',
     },
     paper_country: {
       // boxSizing: 'border-box',
@@ -85,7 +84,7 @@ const useStyles = makeStyles((theme: Theme) =>
     name_capital: {},
     country_description: {},
     widgets: {
-      margin: '10px'
+      margin: '10px',
     },
     img: {
       margin: 'auto',
@@ -96,19 +95,14 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-type TParams = { id: string };
-
-const CountryContent = ({ countries }: any) => {
-  const ref = useRef<HTMLInputElement>(null);
-  useEffect(()=>{
-    window.scrollTo(0, ref.current!.offsetTop);
-  })
+const CountryContent = ({ currentCountry }) => {
   const classes = useStyles();
-  const id: TParams = useParams();
-  if (countries === undefined) return <></>;
-  const index = countries.findIndex((item: CountryType) => item.id === id.id);
-  if (index === -1) return <Redirect to="/" />;
-  const country: CountryType = countries[Number(index)];
+
+  const ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, ref.current!.offsetTop);
+  });
 
   return (
     <div ref={ref} className={classes.root}>
@@ -120,14 +114,17 @@ const CountryContent = ({ countries }: any) => {
             </div>
             <div className={classes.about_country}>
               <div className={classes.name_country}>
-                <h1>{country.localizations[0].name}, {country.localizations[0].capital}</h1>
+                <h1>
+                  {currentCountry.localizations[0].name},{' '}
+                  {currentCountry.localizations[0].capital}
+                </h1>
               </div>
               <div className={classes.text_field}>
                 <TextField
                   id="standard-read-only-input"
                   label="Descriptions"
                   multiline
-                  defaultValue={country.localizations[0].description}
+                  defaultValue={currentCountry.localizations[0].description}
                   InputProps={{
                     readOnly: true,
                   }}
@@ -142,9 +139,15 @@ const CountryContent = ({ countries }: any) => {
         </Paper>
       </div>
       <Paper className={classes.paper_widgets}>
-        <div className={classes.widgets}><DateWidgetContainer/></div>
-        <div className={classes.widgets}><DateWidgetContainer/></div>
-        <div className={classes.widgets}><DateWidgetContainer/></div>
+        <div className={classes.widgets}>
+          <DateWidgetContainer />
+        </div>
+        <div className={classes.widgets}>
+          <DateWidgetContainer />
+        </div>
+        <div className={classes.widgets}>
+          <DateWidgetContainer />
+        </div>
       </Paper>
     </div>
   );
