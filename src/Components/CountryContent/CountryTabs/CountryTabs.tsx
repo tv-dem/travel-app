@@ -5,6 +5,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Video from '../../Video/Video';
+import Gallery from '../../Gallery/Gallery';
 
 interface TabPanelProps {
   children: React.ReactNode;
@@ -21,7 +23,6 @@ function TabPanel(props: TabPanelProps) {
       hidden={value !== index}
       id={`a11y-tabpanel-${index}`}
       aria-labelledby={`a11y-tab-${index}`}
-
     >
       {value === index && (
         <Box p={1}>
@@ -56,7 +57,6 @@ function TabsPanel(props: TabsProps) {
       >
         <Tab label="Photo gallery" aria-controls="a11y-tabpanel-0" id="a11y-tab-0" />
         <Tab label="Video" aria-controls="a11y-tabpanel-1" id="a11y-tab-1" />
-        <Tab label="Other" aria-controls="a11y-tabpanel-2" id="a11y-tab-2" />
       </Tabs>
     </AppBar>
   );
@@ -65,7 +65,6 @@ function TabsPanel(props: TabsProps) {
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-
   },
 });
 
@@ -91,13 +90,10 @@ export default function AccessibleTabs(): JSX.Element {
 
 
       <TabPanel value={value} index={0}>
-        Photo gallery
+        <Gallery/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Video
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        ...
+        <Video/>
       </TabPanel>
     </div>
   );

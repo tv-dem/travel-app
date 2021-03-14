@@ -5,13 +5,13 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import CountryTabs from './CountryTabs/CountryTabs';
 import { CountryType } from '../CardsAll/CountryType';
-// import DateWidget from '../DateWidget/DateWidget';
+import Map from '../Map/Map'
+import DateWidgetContainer from '../DateWidget/DateWidgetContainer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: '90%',
-      flexGrow: 2,
+      width: '100%',
       flexDirection: 'row',
       display: 'flex',
     },
@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: '10px',
     },
     paper_widgets: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
       width: '20%',
       padding: theme.spacing(2),
       margin: '10px 0',
@@ -44,16 +47,20 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
     },
     map: {
-      width: 300,
+      width: 500,
+      display: 'flex',
+      alignItems: 'center',
     },
     about_country: {
       width: '90%',
     },
-    name_country: {},
+    name_country: {
+      margin: '15px',
+    },
     name_capital: {},
     country_description: {},
     widgets: {
-      width: '20%',
+      margin: '10px'
     },
     img: {
       margin: 'auto',
@@ -85,13 +92,12 @@ const CountryContent = ({ countries }: any) => {
       <div className={classes.country_box}>
         <Paper className={classes.paper_country}>
           <div className={classes.main_content}>
-            <div className={classes.map}>map</div>
+            <div className={classes.map}>
+              <Map />
+            </div>
             <div className={classes.about_country}>
               <div className={classes.name_country}>
-                {country.localizations[0].name}
-              </div>
-              <div className={classes.name_capital}>
-                {country.localizations[0].capital}
+                <h1>{country.localizations[0].name}, {country.localizations[0].capital}</h1>
               </div>
               <div className={classes.text_field}>
                 <TextField
@@ -113,7 +119,9 @@ const CountryContent = ({ countries }: any) => {
         </Paper>
       </div>
       <Paper className={classes.paper_widgets}>
-        <div className={classes.widgets}>{/* <DateWidget /> */}</div>
+        <div className={classes.widgets}><DateWidgetContainer/></div>
+        <div className={classes.widgets}><DateWidgetContainer/></div>
+        <div className={classes.widgets}><DateWidgetContainer/></div>
       </Paper>
     </div>
   );

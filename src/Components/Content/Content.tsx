@@ -11,7 +11,7 @@ import CountryContentContainer from '../CountryContent/CountryContentContainer';
 import CardsAllContainer from '../CardsAll/CardsAllContainer';
 
 const Content: React.FC = () => (
-  <div className="content container">
+  <div className="content content-container">
     <Router>
       <Switch>
         <Route path="/country/:id" component={CountryContentContainer} />
