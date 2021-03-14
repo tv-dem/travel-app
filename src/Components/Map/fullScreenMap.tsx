@@ -16,7 +16,6 @@ L.Marker.prototype.options.icon = L.icon({
 
 const MapFull = ({ onCloseMap, data, position }) => (
   <>
-    <FullscreenExitIcon style={{color: '#fff'}} fontSize='large' className='full-map-btn-close' type='button' onClick={onCloseMap}>;sldkf</FullscreenExitIcon>
     <MapContainer className='map-container_full' center={position} zoom={6} >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -25,6 +24,7 @@ const MapFull = ({ onCloseMap, data, position }) => (
       />
       <Marker position={position} />
       <GeoJSON data={data} />
+      <FullscreenExitIcon style={{color: '#fff'}} fontSize='large' className='full-map-btn-close' type='button' onClick={onCloseMap}/>
     </MapContainer>
     </>
 )
