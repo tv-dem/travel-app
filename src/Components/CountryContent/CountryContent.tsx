@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -11,45 +11,70 @@ import DateWidgetContainer from '../DateWidget/DateWidgetContainer';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      padding: 10,
       width: '100%',
-      flexDirection: 'row',
       display: 'flex',
+      flexDirection: 'column',
+      [theme.breakpoints.up('lg')]: {
+        flexDirection: 'row',
+      },
     },
     text_field: {
       '& > *': {
-        margin: theme.spacing(2),
+        margin: theme.spacing(1),
+        [theme.breakpoints.up('lg')]: {
+          margin: theme.spacing(2),
+        },
         width: '100%',
       },
     },
     country_box: {
-      width: '80%',
-      margin: '10px ',
+      width: '100%'
     },
     paper_country: {
+      // boxSizing: 'border-box',
       width: '100%',
       padding: theme.spacing(2),
       marginBottom: '10px',
     },
     paper_widgets: {
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      boxSizing: 'border-box',
+      flexWrap: 'wrap',
+      [theme.breakpoints.up('lg')]: {
+        justifyContent: 'end',
+        flexDirection: 'column',
+        margin: '0 0 0 10px',
+        width: '20%',
+      },
+      margin: '10px 0 0',
       alignItems: 'center',
-      width: '20%',
-      padding: theme.spacing(2),
-      margin: '10px 0',
+      width: '100%',
     },
     main_content: {
       display: 'flex',
-      flexDirection: 'row',
+      flexDirection: 'column',
+      [theme.breakpoints.up('lg')]: {
+        flexDirection: 'row',
+      },
       padding: '10px',
     },
     tabs: {
       width: '100%',
     },
     map: {
-      width: 500,
-      display: 'flex',
-      alignItems: 'center',
+      width: '100%',
+      height: '50vw',
+      maxHeight: '500px',
+      [theme.breakpoints.up('lg')]: {
+        width: '50%',
+        minWidth: '500px',
+        height: '300px',
+        display: 'flex',
+        alignItems: 'center',
+      },
     },
     about_country: {
       width: '90%',
@@ -74,21 +99,19 @@ const useStyles = makeStyles((theme: Theme) =>
 type TParams = { id: string };
 
 const CountryContent = ({ countries }: any) => {
-
+  const ref = useRef<HTMLInputElement>(null);
+  useEffect(()=>{
+    window.scrollTo(0, ref.current!.offsetTop);
+  })
   const classes = useStyles();
-
   const id: TParams = useParams();
-
   if (countries === undefined) return <></>;
-
   const index = countries.findIndex((item: CountryType) => item.id === id.id);
-
   if (index === -1) return <Redirect to="/" />;
-
   const country: CountryType = countries[Number(index)];
 
   return (
-    <div className={classes.root}>
+    <div ref={ref} className={classes.root}>
       <div className={classes.country_box}>
         <Paper className={classes.paper_country}>
           <div className={classes.main_content}>
