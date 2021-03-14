@@ -1,10 +1,10 @@
 import React from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import CountryTabs from './CountryTabs/CountryTabs';
-import { CountryType } from '../CardsAll/CountryType';
+
 import Map from '../Map/Map'
 import DateWidgetContainer from '../DateWidget/DateWidgetContainer';
 
@@ -71,21 +71,23 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-type TParams = { id: string };
+// type TParams = { id: string };
 
-const CountryContent = ({ countries }: any) => {
+const CountryContent = ({currentCountry}) => {
+
+
 
   const classes = useStyles();
 
-  const id: TParams = useParams();
+  // const id: TParams = useParams();
 
-  if (countries === undefined) return <></>;
+  // if (countries === undefined) return <></>;
 
-  const index = countries.findIndex((item: CountryType) => item.id === id.id);
+  // const index = countries.findIndex((item: CountryType) => item.id === id.id);
 
-  if (index === -1) return <Redirect to="/" />;
+  // if (index === -1) return <Redirect to="/" />;
 
-  const country: CountryType = countries[Number(index)];
+  // const country: CountryType = countries[Number(index)];
 
   return (
     <div className={classes.root}>
@@ -97,14 +99,14 @@ const CountryContent = ({ countries }: any) => {
             </div>
             <div className={classes.about_country}>
               <div className={classes.name_country}>
-                <h1>{country.localizations[0].name}, {country.localizations[0].capital}</h1>
+                <h1>{currentCountry.localizations[0].name}, {currentCountry.localizations[0].capital}</h1>
               </div>
               <div className={classes.text_field}>
                 <TextField
                   id="standard-read-only-input"
                   label="Descriptions"
                   multiline
-                  defaultValue={country.localizations[0].description}
+                  defaultValue={currentCountry.localizations[0].description}
                   InputProps={{
                     readOnly: true,
                   }}

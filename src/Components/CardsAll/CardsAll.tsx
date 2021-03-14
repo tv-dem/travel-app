@@ -4,8 +4,9 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CardsAllComponent from './CardsAllComponent';
 import CountryCard from '../CountryCard/CountryCard';
-import {CountryCardProps} from './CountryType';
+
 import './CardsAll.scss';
+import { CountryCardProps,CountryType } from './CountryType';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,11 +29,25 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const CardsAll: React.FC<CountryCardProps> = (props: any) => {
-  const { countries, error, pending, fetchCountries } = props;
+  const {
+    error,
+    pending,
+    fetchCountries,
+    input,
+    filterCountries,
+    countriesSearch,
+    setCurrentCountry,
+  } = props;
 
   const classes = useStyles();
 
-  useEffect(() => fetchCountries(), [fetchCountries]);
+
+  useEffect(() => {
+    fetchCountries();
+    setCurrentCountry(null)
+  }, [fetchCountries,setCurrentCountry]);
+
+  useEffect(() => filterCountries(input), [input, filterCountries]);
 
   return (
     <CardsAllComponent>
@@ -61,8 +76,8 @@ const CardsAll: React.FC<CountryCardProps> = (props: any) => {
           {error ? (
             <span className="list-error">{error}</span>
           ) : (
-            countries.map((e: any) => (
-              <Link className="card-item" key={e.id} to={`/country/${e.id}`}>
+            countriesSearch.map((e:CountryType) => (
+              <Link className="card-item" key={e.id} to={`/country/${e.id}`} onClick={()=>setCurrentCountry(e)}>
                 <CountryCard country={e} />
               </Link>
             ))
