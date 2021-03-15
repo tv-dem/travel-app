@@ -3,20 +3,20 @@ import { stateType } from './types';
 
 const initialState: stateType = {
   selectedLanguage: {
-    lan: 'rus',
+    lan: 'ru',
     val: 'Русский',
   },
   languages: [
     {
-      lan: 'rus',
+      lan: 'ru',
       val: 'Русский',
     },
     {
-      lan: 'eng',
+      lan: 'en',
       val: 'English',
     },
     {
-      lan: 'deu',
+      lan: 'de',
       val: 'Deutsch',
     },
   ],

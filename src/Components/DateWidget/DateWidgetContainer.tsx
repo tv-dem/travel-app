@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import DateWidget from './DateWidget';
-import onDateChangeAC from '../../Redux/CountryPage/actions';
+import {onDateChangeAC} from '../../Redux/CountryPage/actions';
 
 const weekName = [
   'sunday',
