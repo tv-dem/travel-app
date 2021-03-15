@@ -77,7 +77,7 @@ const CardsAll: React.FC<CountryCardProps> = (props: any) => {
             <span className="list-error">{error}</span>
           ) : (
             countriesSearch.map((e:CountryType) => (
-              <Link className="card-item" key={e.id} to={`/country/${e.id}`} onClick={()=>setCurrentCountry(e)}>
+              <Link className="card-item" key={e.id} to={`/country/${e.localizations[0].name}`} onClick={()=>setCurrentCountry(e)}>
                 <CountryCard country={e} />
               </Link>
             ))
