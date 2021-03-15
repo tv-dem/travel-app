@@ -27,6 +27,7 @@ const Search:React.FC = ({input, onChangeInput}:any) => {
           type="search"          
           onChange={onChangeInput}
           value={input}
+          placeholder="Enter Country"
           id="standard-password-input"
           label="search country..."
           variant="standard"         

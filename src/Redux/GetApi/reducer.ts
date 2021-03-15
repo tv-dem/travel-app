@@ -9,6 +9,8 @@ const initialState: stateType = {
     error: null
 }
 
+const fixStr = (str: string) => str.trim().toLocaleLowerCase()
+
 export function countriesReducer(state = initialState, action: any): stateType {
 
     switch (action.type) {
@@ -32,8 +34,13 @@ export function countriesReducer(state = initialState, action: any): stateType {
         case FILTER_COUNTRIES:
             return {
                 ...state,
-                countriesFind: state.countries.filter(country =>
-                    String(action.input).trim().toLocaleLowerCase() === String(country.localizations[0].name).substr(0, action.input.length).trim().toLocaleLowerCase())
+                countriesFind: state.countries.filter(country => {
+                    const { name, capital } = country.localizations[0]
+                  
+
+                    if (fixStr(name).indexOf(fixStr(action.input)) !== -1 || fixStr(capital).indexOf(fixStr(action.input)) !== -1) return true
+                    return false
+                })
             };
         case FETCH_COUNTRIES_ERROR:
             return {
