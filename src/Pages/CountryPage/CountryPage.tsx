@@ -1,12 +1,11 @@
 import React from 'react';
-
 import Footer from '../../Components/Footer/Footer';
-import Header from '../../Components/Header/Header'
+import HeaderCountryContent from '../../Components/Header/HeaderCountryContent/HeaderCountryContent'
 import CountryContentContainer from '../../Components/CountryContent/CountryContentContainer';
 
 
 const CountryPage: React.FC<Element> = () => (<>
-     <Header/>
+     <HeaderCountryContent/>
     <CountryContentContainer />
     <Footer />
   </>

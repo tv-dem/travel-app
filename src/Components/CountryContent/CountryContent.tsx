@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import {Redirect} from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
@@ -30,8 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
     country_box: {
       width: '100%',
     },
-    paper_country: {
-      // boxSizing: 'border-box',
+    paper_country: {      
       width: '100%',
       padding: theme.spacing(2),
       marginBottom: '10px',
@@ -96,6 +96,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const CountryContent = ({ currentCountry }) => {
+
   const classes = useStyles();
 
   const ref = useRef<HTMLInputElement>(null);
@@ -103,6 +104,9 @@ const CountryContent = ({ currentCountry }) => {
   useEffect(() => {
     window.scrollTo(0, ref.current!.offsetTop);
   });
+
+  if(currentCountry===null) return <Redirect to="/"/>
+  
 
   return (
     <div ref={ref} className={classes.root}>

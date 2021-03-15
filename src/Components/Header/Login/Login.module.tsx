@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -9,16 +11,28 @@ const useStyles = makeStyles((theme: Theme) =>
         margin: theme.spacing(1),
       },
     },
+    paper_login: {
+      margin:"10px 0",
+      padding: '20px',
+      alignItems: 'center',
+    },
   }),
 );
 
-
 const Login: React.FC = () => {
   const styles = useStyles();
-  return <div className={styles.root}>
-      <Button variant="contained">Sign in</Button>
-      <Button variant="contained">Sign up</Button>
-    </div>
+  return (
+    <Paper className={styles.paper_login}>
+      <div className={styles.root}>
+        <Link to="/authorization">
+          <Button variant="contained">Sign in</Button>
+        </Link>
+        <Link to="/reset">
+          <Button variant="contained">Sign up</Button>
+        </Link>
+      </div>
+    </Paper>
+  );
 };
 
 export default Login;

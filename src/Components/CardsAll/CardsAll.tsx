@@ -6,7 +6,7 @@ import CardsAllComponent from './CardsAllComponent';
 import CountryCard from '../CountryCard/CountryCard';
 
 import './CardsAll.scss';
-import { CountryCardProps,CountryType } from './CountryType';
+import { CountryCardProps, CountryType } from './CountryType';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,11 +41,10 @@ const CardsAll: React.FC<CountryCardProps> = (props: any) => {
 
   const classes = useStyles();
 
-
   useEffect(() => {
     fetchCountries();
-    setCurrentCountry(null)
-  }, [fetchCountries,setCurrentCountry]);
+    setCurrentCountry(null);
+  }, [fetchCountries, setCurrentCountry]);
 
   useEffect(() => filterCountries(input), [input, filterCountries]);
 
@@ -73,14 +72,19 @@ const CardsAll: React.FC<CountryCardProps> = (props: any) => {
         </div>
       ) : (
         <>
-          {error ? (
+          {error ? 
             <span className="list-error">{error}</span>
-          ) : (
-            countriesSearch.map((e:CountryType) => (
-              <Link className="card-item" key={e.id} to={`/country/${e.id}`} onClick={()=>setCurrentCountry(e)}>
+           : 
+            countriesSearch.map((e: CountryType) => (
+              <Link
+                className="card-item"
+                key={e.id}
+                to={`/country/${e.localizations[0].name}`}
+                onClick={() => setCurrentCountry(e)}
+              >
                 <CountryCard country={e} />
               </Link>
-            ))
+            )
           )}
         </>
       )}
