@@ -7,8 +7,7 @@ import ResetPage from './Pages/AuthorizationPage/ResetPage/ResetPage';
 
 const App: React.FC = () => (
   <BrowserRouter>
-    <Switch>
-     
+    <Switch>     
       <Route  path="/country/:countryName" component={CountryPage} /> 
       <Route  path='/authorization' component={AuthorizationPage} />
       <Route  path='/reset' component={ResetPage} />
