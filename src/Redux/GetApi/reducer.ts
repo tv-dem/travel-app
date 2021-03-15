@@ -36,9 +36,9 @@ export function countriesReducer(state = initialState, action: any): stateType {
                 ...state,
                 countriesFind: state.countries.filter(country => {
                     const { name, capital } = country.localizations[0]
+                  
 
-                    if (fixStr(action.input) === fixStr(name).substr(0, action.input.length)
-                        || fixStr(action.input) === fixStr(capital).substr(0, action.input.length)) return true
+                    if (fixStr(name).indexOf(fixStr(action.input)) !== -1 || fixStr(capital).indexOf(fixStr(action.input)) !== -1) return true
                     return false
                 })
             };
