@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -16,8 +17,8 @@ const useStyles = makeStyles((theme: Theme) =>
 const Login: React.FC = () => {
   const styles = useStyles();
   return <div className={styles.root}>
-      <Button variant="contained">Sign in</Button>
-      <Button variant="contained">Sign up</Button>
+    <Link to="/authorization"><Button variant="contained">Sign in</Button></Link>
+    <Link to="/reset"><Button variant="contained">Sign up</Button></Link>
     </div>
 };
 
