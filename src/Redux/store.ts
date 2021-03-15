@@ -1,7 +1,7 @@
 import { combineReducers, createStore } from 'redux';
 import mainPageReducer from './MainPage/reducer';
 import languageReducer from './Language/reducer';
-import CountryPageReducer from './CountryPage/reducer';
+import {CountryPageReducer} from './CountryPage/reducer';
 import { countriesReducer } from './GetApi/reducer';
 
 const reducers = combineReducers({

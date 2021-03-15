@@ -1,4 +1,4 @@
-import ON_TIME_CHANGE from './actionTypes';
+import {ON_TIME_CHANGE, FETCH_WEATHER_PENDING, FETCH_WEATHER_SUCCESS, FETCH_WEATHER_ERROR} from './actionTypes';
 
 const onDateChangeAC = (utf:number) => {
   const date = new Date();
@@ -10,4 +10,18 @@ const onDateChangeAC = (utf:number) => {
   };
 };
 
-export default onDateChangeAC;
+const fetchWeatherPending = () => ({
+  type: FETCH_WEATHER_PENDING
+});
+
+const fetchWeatherSuccess = (data: any) =>({
+  type: FETCH_WEATHER_SUCCESS,
+  CurrentData: data,
+})
+
+const fetchWeatherError = (Error: string) => ({
+  type: FETCH_WEATHER_ERROR,
+  error: Error,
+});
+
+export {onDateChangeAC, fetchWeatherPending, fetchWeatherSuccess, fetchWeatherError};
