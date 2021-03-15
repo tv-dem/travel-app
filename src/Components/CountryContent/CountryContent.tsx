@@ -3,6 +3,9 @@ import {Redirect} from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardMedia from '@material-ui/core/CardMedia';
 import CountryTabs from './CountryTabs/CountryTabs';
 
 import Map from '../Map/Map';
@@ -80,9 +83,18 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     name_country: {
       margin: '15px',
+      display:"flex",
+      flexDirection:"row",
+      justifyContent:"space-around",
+      flexWrap:"wrap",
+      textAlign:"center",
     },
     name_capital: {},
     country_description: {},
+    country_img:{
+      margin: theme.spacing(1),
+      padding:"3px",
+    },
     widgets: {
       margin: '10px',
     },
@@ -122,6 +134,17 @@ const CountryContent = ({ currentCountry }) => {
                   {currentCountry.localizations[0].name},{' '}
                   {currentCountry.localizations[0].capital}
                 </h1>
+                <Card className={classes.country_img}>
+                 <CardActionArea>
+                 <CardMedia
+                   component="img"
+                   alt= {currentCountry.localizations[0].name}
+                   height="140"
+                   image={currentCountry.imageUrl}
+                   title={currentCountry.localizations[0].name}
+                 />        
+               </CardActionArea>     
+                </Card>              
               </div>
               <div className={classes.text_field}>
                 <TextField
