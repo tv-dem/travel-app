@@ -126,7 +126,7 @@ const CountryContent = ({ currentCountry }) => {
         <Paper className={classes.paper_country}>
           <div className={classes.main_content}>
             <div className={classes.map}>
-              <Map />
+              <Map currentCountry={currentCountry} />
             </div>
             <div className={classes.about_country}>
               <div className={classes.name_country}>

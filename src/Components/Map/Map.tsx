@@ -16,10 +16,12 @@ L.Marker.prototype.options.icon = L.icon({
   shadowUrl: iconShadow,
 });
 
-const Map = () => {
+const Map = ({currentCountry}) => {
+  const [lan,len]=currentCountry.capitalLocation.coordinates
+   const {ISOCode}=currentCountry
   const [isFullscreen, setFullScreen] = useState(false);
-  const data = mapData.features.find(({ properties }) => properties.ISO_A3 === 'BLR');
-  const position = [53.916667, 27.55];
+  const data = mapData.features.find(({ properties }) => properties.ISO_A3 === ISOCode);
+  const position = [lan,len];
   return (
     <>
       <div className='map-container-wrapper'>
@@ -31,7 +33,7 @@ const Map = () => {
             fullscreenControl='true'
           />
           <Marker position={position} />
-          <GeoJSON data={mapData.features.find(({ properties }) => properties.ISO_A3 === 'BLR')} />
+          <GeoJSON data={data} />
         </MapContainer>
       </div>
       {isFullscreen && <MapFull data={data}
