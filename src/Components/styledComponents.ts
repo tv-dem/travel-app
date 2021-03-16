@@ -329,3 +329,42 @@ export const UserForm = styled.form`
   line-height: 24px;
   color: #000;
 `;
+
+export const ExitButton = styled.button`
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  padding: 12px 48px 12px 56px;
+  border: none;
+  border-top: 1px solid rgba(0,0,0,.08);
+  transition-duration: .12s;
+  transition-timing-function: ease-in-out;
+  transition-property: background-color;
+  position: relative;
+  color: #000;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    background-color: rgba(0,0,0,.04);
+  }
+
+  & svg {
+    display: inline-block;
+    vertical-align: middle;
+    fill: rgba(0,0,0,0.48);
+    color: currentColor;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    touch-action: manipulation;
+    transform-origin: center center;
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+`;
