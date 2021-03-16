@@ -1,54 +1,111 @@
 import { connect } from 'react-redux';
 import DateWidget from './DateWidget';
-import {onDateChangeAC} from '../../Redux/CountryPage/actions';
+import { onDateChangeAC } from '../../Redux/CountryPage/actions';
 
-const weekName = [
-  'sunday',
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday',
-]
+const dayTranslate = {
+  ru:{
+    weekName: [
+      'понедельник',
+      'вторник',
+      'среда',
+      'честверг',
+      'пятница',
+      'суббота',
+      'воскресенье',
+    ],
+    monthName: [
+      'Январь',
+      'Февраль',
+      'Март',
+      'Апрель',
+      'Май',
+      'Июнь',
+      'Июль',
+      'Август',
+      'Сентябрь',
+      'Октябрь',
+      'Ноябрь',
+      'Декабрь',
+    ],
+  },
+  en: {
+    weekName: [
+      'sunday',
+      'monday',
+      'tuesday',
+      'wednesday',
+      'thursday',
+      'friday',
+      'saturday',
+    ],
+    monthName: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
+  },
+  uk:{
+    weekName: [
+      'Понеділок',
+      'Вівторок',
+      'Среда',
+      'Честверг',
+      'П\'ятницю',
+      'Суботу',
+      'Неділя',
+    ],
+    monthName: [
+      'Січні',
+      'Лютий',
+      'Березень',
+      'Квітень',
+      'Травень',
+      'Червня',
+      'Липень',
+      'Серпень',
+      'Вересня',
+      'Жовтень',
+      'Листопад',
+      'Грудень',
+    ],
+  },
+};
 
-const monthName = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-]
 
-
-const mapStateToProps = ({countryPage, getCountries}:any) => {
-  const {date} = countryPage;
+const mapStateToProps = ({ countryPage, getCountries, language}: any) => {
+  const { date } = countryPage;
+  let { lan } = language.selectedLanguage;
+  if(!lan){
+    lan = 'en';
+  }
   const day = date.getDate();
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
-  const hours = date.getHours()
-  return{
-    day:`${day < 10 ? 0 : ''}${day}`,
-    hours:`${hours < 10 ? 0 : ''}${hours}`,
-    minutes:`${minutes < 10 ? 0 : ''}${minutes}`,
-    seconds:`${seconds < 10 ? 0 : ''}${seconds}`,
-    month: monthName[date.getMonth()],
-    week: weekName[date.getDay()],
+  const hours = date.getHours();
+  return {
+    day: `${day < 10 ? 0 : ''}${day}`,
+    hours: `${hours < 10 ? 0 : ''}${hours}`,
+    minutes: `${minutes < 10 ? 0 : ''}${minutes}`,
+    seconds: `${seconds < 10 ? 0 : ''}${seconds}`,
+    month: dayTranslate[lan].monthName[date.getMonth()],
+    week: dayTranslate[lan].weekName[date.getDay()],
     utf: Number(getCountries.currentCountry.utc),
-  }
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch:any) => ({
-  onChangeDate: (utf:number) => dispatch(onDateChangeAC(utf))
-})
+const mapDispatchToProps = (dispatch: any) => ({
+  onChangeDate: (utf: number) => dispatch(onDateChangeAC(utf)),
+});
 
-const DateWidgetContainer =  connect(mapStateToProps, mapDispatchToProps)(DateWidget);
+const DateWidgetContainer = connect(mapStateToProps, mapDispatchToProps)(DateWidget);
 
-export default DateWidgetContainer
+export default DateWidgetContainer;
