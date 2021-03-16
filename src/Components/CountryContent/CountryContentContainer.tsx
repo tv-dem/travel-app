@@ -3,6 +3,7 @@ import CountryContent from './CountryContent';
 import { getCurrentCountry } from '../../Redux/GetApi/reducer';
 
 const mapStateToProps = (state: any) => ({
+  language: state.language.selectedLanguage.lan,
   currentCountry: getCurrentCountry(state.getCountries),
 });
 

@@ -108,7 +108,9 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const CountryContent = ({ currentCountry }) => {
+const CountryContent = ({ currentCountry,language }) => {
+
+  const [{name,capital,description}]= currentCountry.localizations.filter(lan=>lan.lang===language)
 
   const classes = useStyles();
 
@@ -132,17 +134,17 @@ const CountryContent = ({ currentCountry }) => {
             <div className={classes.about_country}>
               <div className={classes.name_country}>
                 <h1>
-                  {currentCountry.localizations[0].name},{' '}
-                  {currentCountry.localizations[0].capital}
+                  {name},{' '}
+                  {capital}
                 </h1>
                 <Card className={classes.country_img}>
                  <CardActionArea>
                  <CardMedia
                    component="img"
-                   alt= {currentCountry.localizations[0].name}
+                   alt= {name}
                    height="140"
                    image={currentCountry.imageUrl}
-                   title={currentCountry.localizations[0].name}
+                   title={name}
                  />        
                </CardActionArea>     
                 </Card>              
@@ -152,7 +154,7 @@ const CountryContent = ({ currentCountry }) => {
                   id="standard-read-only-input"
                   label="Descriptions"
                   multiline
-                  defaultValue={currentCountry.localizations[0].description}
+                  value={description}
                   InputProps={{
                     readOnly: true,
                   }}

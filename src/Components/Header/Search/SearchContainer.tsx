@@ -4,6 +4,7 @@ import changeInputFieldAC from '../../../Redux/MainPage/actions';
 import Search from './Search';
 
 const mapStateToProps = (state:any) => ({
+  language:state.language.selectedLanguage.lan,
   input: state.mainPage.input,
 });
 

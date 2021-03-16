@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import langData from '../../../langData/langData.json'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,16 +20,16 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Login: React.FC = () => {
+const Login: React.FC = ({language}:any) => {
   const styles = useStyles();
   return (
     <Paper className={styles.paper_login}>
       <div className={styles.root}>
         <Link to="/authorization">
-          <Button variant="contained">Sign in</Button>
+          <Button variant="contained">{langData[language].mainPage_Login_sign_in}</Button>
         </Link>
         <Link to="/reset">
-          <Button variant="contained">Sign up</Button>
+          <Button variant="contained">{langData[language].mainPage_Login_sign_up}</Button>
         </Link>
       </div>
     </Paper>
