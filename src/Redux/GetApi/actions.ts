@@ -15,9 +15,10 @@ export const fetchCountriesError = (Error: string | null) => ({
     error: Error,
 });
 
-export const filterCountries = (Input: string) => ({
+export const filterCountries = (Input: string, Lang:string) => ({
     type: FILTER_COUNTRIES,
     input:Input,
+    lang:Lang,
 });
 
 export const setCurrentCountry = (currentCountry: any) => ({

@@ -47,7 +47,7 @@ const CardsAll: React.FC = (props: any) => {
     setCurrentCountry(null);
   }, [fetchCountries, setCurrentCountry]);
 
-  useEffect(() => filterCountries(input), [input, filterCountries]);
+  useEffect(() => filterCountries(input,language), [input,language, filterCountries]);
 
   return (
     <CardsAllComponent>
