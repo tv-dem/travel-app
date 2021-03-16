@@ -16,10 +16,6 @@ L.Marker.prototype.options.icon = L.icon({
   shadowUrl: iconShadow,
 });
 
-// type MapProps = {
-//   coordinates: Array<number>,
-// }
-
 const Map = ({coordinates, iso}:any) => {
   const [data, setData] = useState({});
   const [isFullscreen, setFullScreen] = useState(false);
