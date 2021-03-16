@@ -8,6 +8,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import CountryTabs from './CountryTabs/CountryTabs';
 import WeatherWidgetContainer from '../WeatherWidget/WeatherWidgetContainer';
+import ExchangeWidgetContainer from '../ExchangeWidget/ExchangeWidgetContainer';
 import Map from '../Map/Map';
 import DateWidgetContainer from '../DateWidget/DateWidgetContainer';
 
@@ -173,7 +174,7 @@ const CountryContent = ({ currentCountry }) => {
           <WeatherWidgetContainer />
         </div>
         <div className={classes.widgets}>
-          <DateWidgetContainer />
+          <ExchangeWidgetContainer />
         </div>
       </Paper>
     </div>
