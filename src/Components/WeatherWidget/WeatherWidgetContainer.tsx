@@ -28,6 +28,9 @@ const mapDispatchToProps = (dispatch: any) => ({
   const stateApp = store.getState();
   const currentLan = stateApp.language.selectedLanguage.lan;
   const arrCountries = stateApp.getCountries.currentCountry.localizations;
+  // const currency = stateApp.getCountries.currentCountry.currency;
+  // https://v6.exchangerate-api.com/v6/abde171e7a47ca682606c780/latest/USD
+  // Your API Key: abde171e7a47ca682606c780
   const currentCapital = arrCountries.find((item: any) => item.lang === currentLan).capital;
   const URL_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=${currentCapital}&lang=${currentLan}&appid=${API_KEY}&units=metric`;
 
@@ -39,6 +42,7 @@ const mapDispatchToProps = (dispatch: any) => ({
           throw res.error;
         }
         dispatch(fetchWeatherSuccess(res));
+        console.log(res);
         return res;
       })
       .catch(error => {

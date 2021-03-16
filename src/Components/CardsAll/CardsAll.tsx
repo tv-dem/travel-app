@@ -6,7 +6,7 @@ import CardsAllComponent from './CardsAllComponent';
 import CountryCard from '../CountryCard/CountryCard';
 
 import './CardsAll.scss';
-import { CountryCardProps, CountryType } from './CountryType';
+import {  CountryType } from './CountryType';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,8 +28,9 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const CardsAll: React.FC<CountryCardProps> = (props: any) => {
+const CardsAll: React.FC = (props: any) => {
   const {
+    language,
     error,
     pending,
     fetchCountries,
@@ -82,7 +83,7 @@ const CardsAll: React.FC<CountryCardProps> = (props: any) => {
                 to={`/country/${e.localizations[0].name}`}
                 onClick={() => setCurrentCountry(e)}
               >
-                <CountryCard country={e} />
+                <CountryCard country={e} language={language} />
               </Link>
             )
           )}
