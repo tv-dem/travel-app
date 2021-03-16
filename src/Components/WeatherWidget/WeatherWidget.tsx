@@ -1,12 +1,10 @@
 import React, {useEffect} from 'react';
 import './WeatherWidget.scss';
 import './owfont-regular.scss';
-import store from '../../Redux/store'
 
 const WeatherWidget: React.FC = ({fetchWeather, data, lan}:any) => {
 
     useEffect(()=>{
-      console.log(store.getState());
     fetchWeather();
   },[lan, fetchWeather]);
 

@@ -4,10 +4,9 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 import ImageGallery from 'react-image-gallery';
 import './Gallery.scss';
 
-const Gallery = ({ imageData }) => {
-  console.log('imageData', imageData)
-  return <>
+const Gallery = ({ imageData }) => (
+  <>
     {imageData ? <ImageGallery items={imageData} /> : null}
-  </>;
-};
+  </>
+);
 export default Gallery;

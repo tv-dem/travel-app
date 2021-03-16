@@ -15,7 +15,6 @@ const mapDispatchToProps = (dispatch) => ({
     fetch('https://api-travel-app.herokuapp.com/places')
       .then(res => res.json())
       .then(data => {
-        console.log('data', data);
         const countryPlaces = data.find(({ countryId }) => countryId.id === id);
         dispatch(fetchPlacesSuccessAC(countryPlaces, lan));
       })

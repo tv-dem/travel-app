@@ -59,8 +59,10 @@ const useStyles = makeStyles((theme: Theme) =>
     main_content: {
       display: 'flex',
       flexDirection: 'column',
+      alignItems: 'center',
       [theme.breakpoints.up('lg')]: {
         flexDirection: 'row',
+        alignItems: 'end',
       },
       padding: '10px',
     },
@@ -108,7 +110,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const CountryContent = ({ currentCountry, fetchPlaces, currentLan }) => {
+const CountryContent = ({ currentCountry, fetchPlaces, currentLan, language }) => {
 
   const [{name,capital,description}]= currentCountry.localizations.filter(lan=>lan.lang===language)
   const classes = useStyles();

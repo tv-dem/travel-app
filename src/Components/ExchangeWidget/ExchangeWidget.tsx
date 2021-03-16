@@ -7,9 +7,8 @@ import './ExchangeWidget.scss';
 const ExchangeWidget: React.FC = ({fetchExchange, dataExchange, currencyCurrent}:any) => {
 
     useEffect(()=>{
-      console.log(currencyCurrent);
     fetchExchange();
- 
+
   },[currencyCurrent, fetchExchange]);
 
   return (

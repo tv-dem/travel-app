@@ -39,7 +39,6 @@ const URL_EXCHANGE = `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/${cur
           throw res.error;
         }
         dispatch(fetchExchangeSuccess(res.conversion_rates));
-        console.log(res.conversion_rates);
 
         return res.conversion_rates;
       })
