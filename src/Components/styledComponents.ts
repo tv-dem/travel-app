@@ -309,3 +309,23 @@ export const ButtonSave = styled.button`
   transition: background-color 0.2s ease-in-out;
   background-clip: padding-box;
 `;
+
+export const ContentTitle = styled.h1`
+  font-size: 30px;
+  line-height: 40px;
+  padding: 48px 0 24px 0;
+  margin: 0;
+  font-weight: normal;
+  margin-bottom: 32px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+`;
+
+export const UserForm = styled.form`
+  margin-bottom: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000;
+`;
