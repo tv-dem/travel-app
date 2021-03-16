@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from '../Login/Login.module';
+import Login from '../Login/Login.container';
 import HeaderComp from '../HeaderComponents'
 import LanguageContainer from '../Language/LanguageContainer';
 import Logo from '../Logo/Logo'
