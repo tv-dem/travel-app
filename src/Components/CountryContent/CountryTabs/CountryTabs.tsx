@@ -68,7 +68,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function AccessibleTabs(): JSX.Element {
+export default function AccessibleTabs({videoUrl}:any): JSX.Element {
   const classes = useStyles();
 
   const [value, setValue] = React.useState(0);
@@ -93,7 +93,7 @@ export default function AccessibleTabs(): JSX.Element {
         <Gallery/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Video/>
+        <Video url={videoUrl}/>
       </TabPanel>
     </div>
   );

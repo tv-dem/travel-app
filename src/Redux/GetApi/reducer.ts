@@ -1,13 +1,19 @@
-import { FETCH_COUNTRIES_PENDING, FETCH_COUNTRIES_SUCCESS, FETCH_COUNTRIES_ERROR, FILTER_COUNTRIES, SET_CURRENT_COUNTRY } from './actionsType';
-import { stateType } from './types'
+import {
+  FETCH_COUNTRIES_PENDING,
+  FETCH_COUNTRIES_SUCCESS,
+  FETCH_COUNTRIES_ERROR,
+  FILTER_COUNTRIES,
+  SET_CURRENT_COUNTRY,
+} from './actionsType';
+import { stateType } from './types';
 
 const initialState: stateType = {
-    pending: false,
-    countries: [],
-    countriesFind: [],
-    currentCountry: null,
-    error: null
-}
+  pending: false,
+  countries: [],
+  countriesFind: [],
+  currentCountry: null,
+  error: null,
+};
 
 const fixStr = (str: string) => str.trim().toLocaleLowerCase()
 
@@ -36,7 +42,7 @@ export function countriesReducer(state = initialState, action: any): stateType {
                 ...state,
                 countriesFind: state.countries.filter(country => {
                     const { name, capital } = country.localizations[0]
-                  
+
 
                     if (fixStr(name).indexOf(fixStr(action.input)) !== -1 || fixStr(capital).indexOf(fixStr(action.input)) !== -1) return true
                     return false

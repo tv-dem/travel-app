@@ -1,21 +1,19 @@
-import React, { useEffect } from 'react';
-import { Player } from 'video-react';
+import React from 'react';
 import "video-react/dist/video-react.css"
 import './Video.scss'
+import Iframe from 'react-iframe'
 
-const Video:React.FC = () => {
-  useEffect(()=>{
-    fetch("https://api-travel-app.herokuapp.com/country")
-      .then(res=>res.json())
-      .then(data=>console.log(data));
-  })
+const Video:React.FC<{url: string}> = ({ url }) => {
+  console.log(url)
   return (
-    <div className='video-container'>
-      <Player
-        playsInline
-        poster="/assets/poster.png"
-        src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
-      />
+    <div style={{height: '50vw', width: '100%'}}>
+      <Iframe url='https://youtube.com/embed/6OJ_vpLte_Q'
+              width="100%"
+              height="100%"
+              id="myId"
+              className="myClassname"
+              display="block"
+              position="relative"/>
     </div>
   );
 }

@@ -33,8 +33,8 @@ export function CountryPageReducer(state = initialState, action:any): stateType{
         ...state,
          date: action.date}
     }
-   
-      case FETCH_WEATHER_PENDING: 
+
+      case FETCH_WEATHER_PENDING:
       return {
           ...state,
           pending: true
@@ -50,8 +50,7 @@ export function CountryPageReducer(state = initialState, action:any): stateType{
           ...state,
           pending: false,
           error: action.error
-      }
-      
+      }      
       case FETCH_EXCHANGE_PENDING: 
       return {
           ...state,

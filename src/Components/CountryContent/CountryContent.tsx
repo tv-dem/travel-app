@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
     country_box: {
       width: '100%',
     },
-    paper_country: {      
+    paper_country: {
       width: '100%',
       padding: theme.spacing(2),
       marginBottom: '10px',
@@ -118,10 +118,10 @@ const CountryContent = ({ currentCountry,language }) => {
 
   useEffect(() => {
     window.scrollTo(0, ref.current!.offsetTop);
-  });
+    console.log(currentCountry)
+  },[currentCountry]);
 
   if(currentCountry===null) return <Redirect to="/"/>
-  
 
   return (
     <div ref={ref} className={classes.root}>
@@ -129,7 +129,7 @@ const CountryContent = ({ currentCountry,language }) => {
         <Paper className={classes.paper_country}>
           <div className={classes.main_content}>
             <div className={classes.map}>
-              <Map currentCountry={currentCountry} />
+              <Map coordinates={currentCountry.capitalLocation.coordinates} iso={currentCountry.ISOCode}/>
             </div>
             <div className={classes.about_country}>
               <div className={classes.name_country}>
@@ -165,7 +165,7 @@ const CountryContent = ({ currentCountry,language }) => {
         </Paper>
 
         <Paper className={classes.tabs}>
-          <CountryTabs />
+          <CountryTabs videoUrl={currentCountry.videoUrl}/>
         </Paper>
       </div>
       <Paper className={classes.paper_widgets}>
