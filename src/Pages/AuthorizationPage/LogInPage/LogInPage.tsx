@@ -24,10 +24,11 @@ const FormOptions = styled.div`
 
 interface LogInPageProps {
   onToggleErrorComponent: (isError: boolean) => void;
-  // toggleEnterUser: (value: boolean) => void;
+  language:string,
+  langData:any,
 }
 
-const LogInPage: React.FC<LogInPageProps> = ({ onToggleErrorComponent }) => {
+const LogInPage: React.FC<LogInPageProps> = ({ onToggleErrorComponent,language,langData }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isShow, setShow] = useState(false);
@@ -68,7 +69,7 @@ const LogInPage: React.FC<LogInPageProps> = ({ onToggleErrorComponent }) => {
           tab-index="0"
           id="email"
           name="username"
-          placeholder="E-mail"
+          placeholder={langData[language].loginPage_emale}
           type="text"
           autoComplete="off"
           onChange={handleChangeInputEmail}
@@ -80,7 +81,7 @@ const LogInPage: React.FC<LogInPageProps> = ({ onToggleErrorComponent }) => {
           tab-index="0"
           id="password"
           name="password"
-          placeholder="Password"
+          placeholder={langData[language].loginPage_password}
           type={isShow ? "text" : "password"}
           autoComplete="off"
           onChange={handleChangeInputPassword}
@@ -101,14 +102,14 @@ const LogInPage: React.FC<LogInPageProps> = ({ onToggleErrorComponent }) => {
               checked
               onChange={toggleChecked}
             />
-              Remember Me
+              {langData[language].loginPage_remembeMe}
             </label>
         </div>
-        <NavLink to="/reset">Forgot password?</NavLink>
+        <NavLink to="/reset">{langData[language].loginPage_forgot_password}</NavLink>
         <InputBtnSignIn
           tab-index="0"
           type="submit"
-          value="LogIn"
+          value={langData[language].loginPage_log_in}
           name="login"
         />
       </FormOptions>

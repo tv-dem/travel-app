@@ -11,6 +11,7 @@ import WeatherWidgetContainer from '../WeatherWidget/WeatherWidgetContainer';
 import ExchangeWidgetContainer from '../ExchangeWidget/ExchangeWidgetContainer';
 import Map from '../Map/Map';
 import DateWidgetContainer from '../DateWidget/DateWidgetContainer';
+import langData from '../../langData/langData.json'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -153,7 +154,7 @@ const CountryContent = ({ currentCountry, fetchPlaces, currentLan, language }) =
               <div className={classes.text_field}>
                 <TextField
                   id="standard-read-only-input"
-                  label="Descriptions"
+                  label={langData[language].countryPage_countryContent_description}
                   multiline
                   value={description}
                   InputProps={{
@@ -166,7 +167,7 @@ const CountryContent = ({ currentCountry, fetchPlaces, currentLan, language }) =
         </Paper>
 
         <Paper className={classes.tabs}>
-          <CountryTabs videoUrl={currentCountry.videoUrl}/>
+          <CountryTabs videoUrl={currentCountry.videoUrl}  language={language} langData={langData} />
         </Paper>
       </div>
       <Paper className={classes.paper_widgets}>
