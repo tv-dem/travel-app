@@ -4,7 +4,6 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import CountryTabs from './CountryTabs/CountryTabs';
-
 import Map from '../Map/Map';
 import DateWidgetContainer from '../DateWidget/DateWidgetContainer';
 
@@ -31,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
     country_box: {
       width: '100%',
     },
-    paper_country: {      
+    paper_country: {
       width: '100%',
       padding: theme.spacing(2),
       marginBottom: '10px',
@@ -96,17 +95,16 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const CountryContent = ({ currentCountry }) => {
-
   const classes = useStyles();
 
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     window.scrollTo(0, ref.current!.offsetTop);
-  });
+    console.log(currentCountry)
+  },[currentCountry]);
 
   if(currentCountry===null) return <Redirect to="/"/>
-  
 
   return (
     <div ref={ref} className={classes.root}>
@@ -114,7 +112,7 @@ const CountryContent = ({ currentCountry }) => {
         <Paper className={classes.paper_country}>
           <div className={classes.main_content}>
             <div className={classes.map}>
-              <Map />
+              <Map coordinates={currentCountry.capitalLocation.coordinates} iso={currentCountry.ISOCode}/>
             </div>
             <div className={classes.about_country}>
               <div className={classes.name_country}>
@@ -139,7 +137,7 @@ const CountryContent = ({ currentCountry }) => {
         </Paper>
 
         <Paper className={classes.tabs}>
-          <CountryTabs />
+          <CountryTabs videoUrl={currentCountry.videoUrl}/>
         </Paper>
       </div>
       <Paper className={classes.paper_widgets}>

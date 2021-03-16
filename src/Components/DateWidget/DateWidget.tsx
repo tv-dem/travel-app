@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import './DateWidget.scss'
 
-const DateWidget: React.FC = ({ onChangeDate, day, minutes, seconds, hours,month,week }:any) => {
+const DateWidget: React.FC = ({ onChangeDate, day, minutes, seconds, hours,month,week,utf }:any) => {
   useEffect(()=>{
     const i = setInterval(()=>{
-      onChangeDate(12)
+      onChangeDate(utf)
     }, 1000)
     return () => clearInterval(i)
   })

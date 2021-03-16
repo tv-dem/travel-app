@@ -28,7 +28,7 @@ const monthName = [
 ]
 
 
-const mapStateToProps = ({countryPage}:any) => {
+const mapStateToProps = ({countryPage, getCountries}:any) => {
   const {date} = countryPage;
   const day = date.getDate();
   const minutes = date.getMinutes();
@@ -41,6 +41,7 @@ const mapStateToProps = ({countryPage}:any) => {
     seconds:`${seconds < 10 ? 0 : ''}${seconds}`,
     month: monthName[date.getMonth()],
     week: weekName[date.getDay()],
+    utf: Number(getCountries.currentCountry.utc),
   }
 }
 

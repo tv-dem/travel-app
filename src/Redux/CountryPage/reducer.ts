@@ -2,6 +2,7 @@ import ON_TIME_CHANGE from './actionTypes';
 
 const initialState = {
   date: new Date(),
+
 }
 
 const CountryPageReducer = (state = initialState, action:any) => {
