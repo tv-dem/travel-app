@@ -108,18 +108,17 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const CountryContent = ({ currentCountry,language }) => {
+const CountryContent = ({ currentCountry, fetchPlaces, currentLan }) => {
 
   const [{name,capital,description}]= currentCountry.localizations.filter(lan=>lan.lang===language)
-
   const classes = useStyles();
 
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    window.scrollTo(0, ref.current!.offsetTop);
-    console.log(currentCountry)
-  },[currentCountry]);
+    window.scrollTo(0, ref.current ? ref.current!.offsetTop : 0);
+    fetchPlaces(currentCountry.id, currentLan)
+  },[currentCountry, fetchPlaces, currentLan]);
 
   if(currentCountry===null) return <Redirect to="/"/>
 
@@ -145,9 +144,9 @@ const CountryContent = ({ currentCountry,language }) => {
                    height="140"
                    image={currentCountry.imageUrl}
                    title={name}
-                 />        
-               </CardActionArea>     
-                </Card>              
+                 />
+               </CardActionArea>
+                </Card>
               </div>
               <div className={classes.text_field}>
                 <TextField
