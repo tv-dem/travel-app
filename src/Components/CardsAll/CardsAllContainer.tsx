@@ -15,9 +15,11 @@ import {
 } from '../../Redux/GetApi/reducer';
 import { CountryType } from './CountryType';
 
+
 const MAIN_URL = 'https://api-travel-app.herokuapp.com/countries';
 
 const mapStateToProps = (state: any) => ({
+  language: state.language.selectedLanguage.lan,
   input: state.mainPage.input,
   error: getCountriesError(state.getCountries),
   countries: getCountries(state.getCountries),
