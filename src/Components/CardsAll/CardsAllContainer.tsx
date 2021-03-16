@@ -39,6 +39,7 @@ const mapDispatchToProps = (dispatch: any) => ({
         if (res.error) {
           throw res.error;
         }
+        dispatch(fetchCountriesError(null))
         dispatch(fetchCountriesSuccess(res));
         return res.countries;
       })

@@ -1,0 +1,20 @@
+{
+    "ru": {
+        "countryCard__capital": "Столица",
+        "mainPage_language_setLang": "выбери язык",
+        "mainPage_Search_enter_country": "Введите название страны или столицы",
+        "mainPage_Search_search_country": "Поиск страны...",
+        "mainPage_Login_sign_in": "Войти",
+        "mainPage_Login_sign_up": "Регистрация"
+
+    },
+    "en": {
+        "countryCard__capital": "Capital",
+        "mainPage_language_setLang": "set language",
+        "mainPage_Search_enter_country": "Enter the name of the country or capital",
+        "mainPage_Search_search_country": "Search country...",
+        "mainPage_Login_sign_in": "Sign in",
+        "mainPage_Login_sign_up": "Sign up"
+
+    }
+}

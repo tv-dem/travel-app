@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import './CountryCard.scss';
+import langData from '../../langData/langData.json'
 
 const useStyles = makeStyles({
   root: {
@@ -15,6 +16,12 @@ const useStyles = makeStyles({
     height: "140px",
     width:"100%",
     paddingTop: '56.25%', 
+  },
+  capital_font:{
+    color:"#0e037c",
+   fontSize:"1rem",
+   fontWeight:"bold",
+   lineHeight:"0.5",
   },
 });
 
@@ -38,7 +45,7 @@ const CountryCard = ( props:any ) => {
           {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Capital: {capital}
+            {langData[language].countryCard__capital}: <span className={classes.capital_font}> {capital} </span>
           </Typography>
         </CardContent>
       </CardActionArea>
