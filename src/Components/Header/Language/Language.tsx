@@ -4,6 +4,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import langData from '../../../langData/langData.json';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -17,7 +18,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Language:React.FC = ({languages, selectedLanguage, onSelectLanguage}:any) => {
+const Language: React.FC = ({
+  languages,
+  selectedLanguage,
+  onSelectLanguage,
+}: any) => {
   const classes = useStyles();
   return (
     <div>
@@ -29,12 +34,18 @@ const Language:React.FC = ({languages, selectedLanguage, onSelectLanguage}:any) 
           className={classes.selectEmpty}
           inputProps={{ 'aria-label': 'Without label' }}
         >
-          {languages.map(({val, lan}: any) => <MenuItem key={val} value={lan}>{val}</MenuItem>)}
+          {languages.map(({ val, lan }: any) => (
+            <MenuItem key={val} value={lan}>
+              {val}
+            </MenuItem>
+          ))}
         </Select>
-        <FormHelperText>set language</FormHelperText>
+        <FormHelperText>
+          {langData[selectedLanguage.lan].mainPage_language_setLang}
+        </FormHelperText>
       </FormControl>
     </div>
   );
-}
+};
 
 export default Language;
