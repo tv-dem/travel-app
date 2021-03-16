@@ -13,7 +13,8 @@ const Video:React.FC<{url: string}> = ({ url }) => {
               id="myId"
               className="myClassname"
               display="block"
-              position="relative"/>
+              position="relative"
+              allowFullScreen/>
     </div>
   );
 }

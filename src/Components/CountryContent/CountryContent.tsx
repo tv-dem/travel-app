@@ -107,15 +107,15 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const CountryContent = ({ currentCountry }) => {
+const CountryContent = ({ currentCountry, fetchPlaces, currentLan }) => {
   const classes = useStyles();
 
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    window.scrollTo(0, ref.current!.offsetTop);
-    console.log(currentCountry)
-  },[currentCountry]);
+    window.scrollTo(0, ref.current ? ref.current!.offsetTop : 0);
+    fetchPlaces(currentCountry.id, currentLan)
+  },[currentCountry, fetchPlaces, currentLan]);
 
   if(currentCountry===null) return <Redirect to="/"/>
 
