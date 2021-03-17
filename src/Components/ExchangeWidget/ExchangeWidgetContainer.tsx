@@ -19,6 +19,7 @@ const mapStateToProps = (state: any) => ({
   dataExchange: getDataExchange(state.countryPage),
   pendingExchange: getExchangePending(state.countryPage),
   currencyCurrent: state.getCountries.currentCountry.currency,
+  lan: state.language.selectedLanguage
 });
 
 

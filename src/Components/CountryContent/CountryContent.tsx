@@ -131,6 +131,7 @@ const CountryContent = ({ currentCountry, fetchPlaces, currentLan, language }) =
         <Paper className={classes.paper_country}>
           <div className={classes.main_content}>
             <div className={classes.map}>
+              <Map />
               <Map coordinates={currentCountry.capitalLocation.coordinates} iso={currentCountry.ISOCode}/>
             </div>
             <div className={classes.about_country}>

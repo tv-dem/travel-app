@@ -6,7 +6,6 @@ import { ReactComponent as IconUserHeader } from '../../public/icon-user-header.
 import { ReactComponent as IconLogOut } from '../../public/icon-log-out.svg';
 
 const WrapperModal = styled.div`
-  position: fixed;
   inset: 48px 0px auto auto;
   transform-origin: right top;
   width: 250px;
