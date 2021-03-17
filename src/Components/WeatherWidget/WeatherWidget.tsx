@@ -5,11 +5,10 @@ import './owfont-regular.scss';
 const titlesWeather = {
   ru: "Погода",
   en: "Weather",
-  uk: "Погода",
+  ukr: "Погода",
 }
 
 const WeatherWidget: React.FC = ({fetchWeather, data, lan, cityCurrent}:any) => {
-
     useEffect(()=>{
     fetchWeather();
   },[lan, fetchWeather]);
