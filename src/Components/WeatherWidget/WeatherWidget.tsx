@@ -8,7 +8,7 @@ const titlesWeather = {
   uk: "Погода",
 }
 
-const WeatherWidget: React.FC = ({fetchWeather, data, lan}:any) => {
+const WeatherWidget: React.FC = ({fetchWeather, data, lan, cityCurrent}:any) => {
 
     useEffect(()=>{
     fetchWeather();
@@ -22,7 +22,7 @@ const WeatherWidget: React.FC = ({fetchWeather, data, lan}:any) => {
   <i className={`weather-icon owf owf-${data.weather[0].id}`} />
   </div>
   <div className="boxWeatherContent">
-  <div className="weatherContent weatherContentCapital">{data.name}</div>
+  <div className="weatherContent weatherContentCapital">{cityCurrent}</div>
   <div className="weatherContent">{data.weather[0].description}</div>
   <div className="weatherContent">{data.main.temp}°C</div>
   </div>
