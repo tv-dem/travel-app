@@ -90,13 +90,14 @@ export function CountryPageReducer(state = initialState, action: any): any {
       currentPlace.rate = [...currentPlace.rate, action.rate || 5];
       const imageObj = {...state.imageObj};
       imageObj.places[currentPlace.id - 1] = currentPlace;
-      // fetch(`https://api-travel-app.herokuapp.com/places/${imageObj.countryId}`, {
-      //   method: 'PUT',
-      //   body: JSON.stringify(imageObj),
-      //   headers: {
-      //     'Content-Type': 'application/json;charset=utf-8'
-      //   },
-      // }).then((res) => console.log(res.ok));
+      console.log(imageObj)
+      fetch(`https://api-travel-app.herokuapp.com/places/${imageObj.countryId.id}`, {
+        method: 'PUT',
+        body: JSON.stringify(imageObj),
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+      }).then((res) => console.log(res));
       return { ...state, currentPlace, imageObj };
     }
     case FETCH_PLACES_ERROR: {
