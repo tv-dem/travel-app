@@ -13,14 +13,12 @@ import {
     getWeatherError,
   } from '../../Redux/CountryPage/reducer';
 
-
 const mapStateToProps = (state: any) => ({
   error: getWeatherError(state.countryPage),
   data: getData(state.countryPage),
   pending: getWeatherPending(state.countryPage),
   lan: state.language.selectedLanguage
 });
-
 
 const mapDispatchToProps = (dispatch: any) => ({
   fetchWeather: () => {
