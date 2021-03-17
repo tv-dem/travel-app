@@ -16,7 +16,7 @@ const initialState: stateType = {
       val: 'English',
     },
     {
-      lan: 'ua',
+      lan: 'ukr',
       val: 'Український',
     },
   ],
