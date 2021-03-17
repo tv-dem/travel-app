@@ -37,9 +37,11 @@ const ButtonCancel = styled(ButtonSave)`
 
 interface UserContentPageProps {
   toggleDisplay: () => void;
+  language:string,
+  langData:any
 }
 
-const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay }) => {
+const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay, language, langData }) => {
   // const storageRef = storage().ref().child(user?.email + '/profile.jpg');
 
 
@@ -83,13 +85,13 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay }) => {
   const handleBtnSaveClick = (): void => {
     const minNameLength = 3;
     if (!stateUser.firstName || stateUser.firstName.trim().length < minNameLength || stateUser.firstName[0].match(/\d/)) {
-      setError('Name should be at least 4 symbols, don\'t starts with decimal!');
+      setError(`${langData[language].userPage_userContentPage_invalid_name}`);
     }
     if (!stateUser.lastName || stateUser.lastName.trim().length < minNameLength || stateUser.lastName[0].match(/\d/)) {
-      setError('LastName should be at least 4 symbols, don\'t starts with decimal!');
+      setError(`${langData[language].userPage_userContentPage_invalid_LastName}`);
     }
     if (!stateUser.email || stateUser.email.trim().length < minNameLength || !stateUser.email.includes('@') || !stateUser.email.split('@')[1].includes('.')) {
-      setError('Email should be at least 4 symbols, must contain @, and contain ends with "."');
+      setError(`${langData[language].userPage_userContentPage_invalid_emale}`);
     }
 
     // Upadate info BackEnd
@@ -104,7 +106,7 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay }) => {
     //   setError(error.message);
     // });
 
-    setSuccess('Personal information changed');
+    setSuccess(`${langData[language].userPage_userContentPage_persInf_changed}`);
     setPhoto('');
 
     setTimeout(() => {
@@ -129,7 +131,7 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay }) => {
     const reader = new FileReader();
 
     if (!selectedFile.type.match('image.*')) {
-      setError("Image only please....");
+      setError(`${langData[language].userPage_userContentPage_invalid_image}`);
     }
 
     reader.onload = function (e) {
@@ -160,18 +162,18 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay }) => {
       <UserPhotoWrapper>
         <UserPhoto
           src={isPhoto}
-          alt={`${stateUser.firstName}'s photo`}
+          alt={`${stateUser.firstName} ${langData[language].userPage_userContentPage_photo}`}
         />
       </UserPhotoWrapper>
       <ContentTitle>
-        Personal Information
+      {langData[language].userPage_userContentPage_personal_info}
       </ContentTitle>
       <UserForm>
         <FormField>
           <FormInput
             type='text'
             id='firstName'
-            placeholder='Name'
+            placeholder={langData[language].userPage_userContentPage_placeholder_name}
             name='firstName'
             value={stateUser.firstName}
             onChange={changeName}
@@ -182,7 +184,7 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay }) => {
           <FormInput
             type='text'
             id='lastName'
-            placeholder='LastName'
+            placeholder={langData[language].userPage_userContentPage_placeholder_lastName}
             name='lastName'
             value={stateUser.lastName}
             onChange={changeLastName}
@@ -192,7 +194,7 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay }) => {
           <FormInput
             type='text'
             id='user-email'
-            placeholder='E-mail'
+            placeholder={langData[language].userPage_userContentPage_placeholder_emale}
             name='email'
             value={stateUser.email}
             onChange={changeEmail}
@@ -203,7 +205,7 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay }) => {
           <FormInput
             type='file'
             id='user-photo'
-            placeholder='Add your photo'
+            placeholder={langData[language].userPage_userContentPage_placeholder_addFoto}
             name='userPhoto'
             accept='image/*'
             onChange={handleFileSelect}
@@ -216,7 +218,7 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay }) => {
             value='Save'
             onClick={handleBtnSaveClick}
           >
-            Save
+           {langData[language].userPage_userContentPage_btn_save}
           </ButtonSave>
           <ButtonCancel
             type='button'
@@ -224,7 +226,7 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay }) => {
             value='Cancel'
             onClick={handleBtnCancelClick}
           >
-            Cancel
+            {langData[language].userPage_userContentPage_btn_cancel}
           </ButtonCancel>
         </FormFields>
       </UserForm>

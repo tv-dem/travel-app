@@ -22,10 +22,6 @@ const Header = styled.div`
   }
 `;
 
-// interface AuthorizationPageProps {
-//   onToggleEnterUser: (isUser: boolean) => void;
-// }
-
 const AuthorizationPage = ({ language }) => {
   const addBodyClass = (className: string): void =>
     document.body.classList.add(className);
@@ -83,7 +79,12 @@ const AuthorizationPage = ({ language }) => {
                 />
               )}
             />
-            <Route path="/authorization/registration" component={SignInPage} />
+            <Route path="/authorization/registration"  render={() => 
+                <SignInPage               
+                  language={language}
+                  langData={langData}
+                />
+              } />
           </Switch>
           <SocialBefore>
             {langData[language].autorizationPage_social_reg}
