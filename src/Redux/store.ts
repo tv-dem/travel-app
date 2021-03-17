@@ -3,12 +3,14 @@ import mainPageReducer from './MainPage/reducer';
 import languageReducer from './Language/reducer';
 import {CountryPageReducer} from './CountryPage/reducer';
 import { countriesReducer } from './GetApi/reducer';
+import AuthReducer from './Auth/reducer';
 
 const reducers = combineReducers({
   mainPage: mainPageReducer,
   language: languageReducer,
   countryPage: CountryPageReducer,
   getCountries: countriesReducer,
+  auth: AuthReducer,
 });
 
 const persistedState = ()=>{
@@ -21,7 +23,7 @@ const persistedState = ()=>{
       language:JSON.parse(reduxStateLanguage)
     })
   }
-   return ({}) 
+   return ({})
 }
 
  const store = createStore(
