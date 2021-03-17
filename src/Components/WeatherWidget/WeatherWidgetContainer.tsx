@@ -32,8 +32,7 @@ const mapDispatchToProps = (dispatch: any) => ({
   const API_KEY = "08f2a575dda978b9c539199e54df03b0";
   const stateApp = store.getState();
   let currentLan = stateApp.language.selectedLanguage.lan;
-  const arrCountries = stateApp.getCountries.currentCountry.localizations;
-  const currentCapital = arrCountries.find((item: any) => item.lang === currentLan).capital;
+  const currentCapital = stateApp.getCountries.currentCountry.localizations[0].capital;
   if (currentLan==="ukr")  currentLan = "uk";
   const URL_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=${currentCapital}&lang=${currentLan}&appid=${API_KEY}&units=metric`;
 
