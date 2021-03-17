@@ -2,6 +2,12 @@ import React, {useEffect} from 'react';
 import './WeatherWidget.scss';
 import './owfont-regular.scss';
 
+const titlesWeather = {
+  ru: "Погода",
+  en: "Weather",
+  uk: "Погода",
+}
+
 const WeatherWidget: React.FC = ({fetchWeather, data, lan}:any) => {
 
     useEffect(()=>{
@@ -12,7 +18,7 @@ const WeatherWidget: React.FC = ({fetchWeather, data, lan}:any) => {
   <div className="weatherBox" aria-hidden = "true" onClick={fetchWeather}>
 
   <div className="weatherBoxTitle">
-    Weather
+    {titlesWeather[lan.lan]}
   <i className={`weather-icon owf owf-${data.weather[0].id}`} />
   </div>
   <div className="boxWeatherContent">
