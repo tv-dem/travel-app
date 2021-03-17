@@ -15,10 +15,9 @@ const onDateChangeAC = (utf: number) => {
   };
 };
 
-export const changeCurrentImageAC = (imageId, countryId) => ({
+export const changeCurrentImageAC = (imageId) => ({
   type: CHANGE_CURRENT_IMAGE,
   imageId,
-  countryId,
 })
 
 

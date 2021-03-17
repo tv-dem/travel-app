@@ -11,22 +11,31 @@ import {
 // import { stateType } from './types';
 
 const initialState = {
-  currentImage: {
-    countryId: '',
+  currentPlace: {
     id: 0,
-    url: '',
-    description: '',
+    localizations: [
+      {lang: "ru", description: "изобраежения не найдены", name: ""},
+      {lang: "en", description: "nothing", name: ""},
+      {lang: "ukr", description: "няма", name: ""},
+    ],
+    photoUrl: "https://fl-1.cdn.flockler.com/embed/not-found.png",
     rate: [],
   },
-  images: {
-    URL: [
+
+  imageObj: {
+    countryId: { id: '' } ,
+    _id: '',
+    places: [
       {
         id: 0,
-        url: 'https://fl-1.cdn.flockler.com/embed/not-found.png',
-        description: 'no information',
+        localizations: [
+          {lang: "ru", description: "изобраежения не найдены", name: ""},
+          {lang: "en", description: "nothing", name: ""},
+          {lang: "ukr", description: "няма", name: ""},
+        ],
+        photoUrl: "https://fl-1.cdn.flockler.com/embed/not-found.png",
         rate: [],
-        countryId: '',
-      },
+      }
     ],
     pending: false,
   },
@@ -64,36 +73,34 @@ export function CountryPageReducer(state = initialState, action: any): any {
       };
     }
     case CHANGE_CURRENT_IMAGE:{
-      const {countryId, imageId} = action;
-      const currentImage = state.images.URL.find((el) => el.id === imageId);
-      return { ...state, currentImage: {...currentImage, countryId}};
+      const {imageId} = action;
+      const currentPlace = state.imageObj.places.find((el) => el.id === imageId);
+      return { ...state, currentPlace,};
     }
     case FETCH_PLACES_PENDING: {
-      return { ...state, images: initialState.images };
+      return state;
     }
     case FETCH_PLACES_SUCCESS: {
-      const r = action.data.places.map(({ localizations, photoUrl, rate, id }) => {
-        const local = localizations.find(({ lang }) => lang === action.lan);
-        return {
-          url: photoUrl,
-          description: local ? local.description : '',
-          rate,
-          id,
-        };
-      });
-      return { ...state, images: { URL: r, pending: false }, currentImage: r[0] };
-
+      const r = action.data;
+      return { ...state, imageObj: r, currentPlace: r.places[0] };
     }
     case ADD_RATING:{
-      const currentImage = { ...state.currentImage };
+      const currentPlace = { ...state.currentPlace };
       // @ts-ignore
-      currentImage.rate = [...currentImage.rate, action.rate || 5];
-      const URL = [...state.images.URL];
-      URL[currentImage.id - 1] = currentImage;
-      return { ...state, currentImage, images: {...state.images, URL} };
+      currentPlace.rate = [...currentPlace.rate, action.rate || 5];
+      const imageObj = {...state.imageObj};
+      imageObj.places[currentPlace.id - 1] = currentPlace;
+      // fetch(`https://api-travel-app.herokuapp.com/places/${imageObj.countryId}`, {
+      //   method: 'PUT',
+      //   body: JSON.stringify(imageObj),
+      //   headers: {
+      //     'Content-Type': 'application/json;charset=utf-8'
+      //   },
+      // }).then((res) => console.log(res.ok));
+      return { ...state, currentPlace, imageObj };
     }
     case FETCH_PLACES_ERROR: {
-      return { ...state, images: initialState.images };
+      return { ...state, imageObj: initialState.imageObj };
     }
     case FETCH_WEATHER_PENDING:
       return {

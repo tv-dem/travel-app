@@ -5,12 +5,12 @@ import ImageGallery from 'react-image-gallery';
 import './Gallery.scss';
 import RaitingContainer from './Raiting/RaitingContainer';
 
-const Gallery = ({ imageData, onSlideImage, idCountry }) => (
-    <>
+const Gallery = ({ imageData, onSlideImage }) => (
+    <div style={{minHeight: '50vw'}}>
       {imageData ? <ImageGallery onSlide={(id) => {
-        onSlideImage(id + 1, idCountry);
+        onSlideImage(id + 1);
       }} items={imageData} /> : null}
       <RaitingContainer />
-    </>
+    </div>
   );
 export default Gallery;
