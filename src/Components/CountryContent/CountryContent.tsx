@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import CountryTabs from './CountryTabs/CountryTabs';
 import WeatherWidgetContainer from '../WeatherWidget/WeatherWidgetContainer';
 import ExchangeWidgetContainer from '../ExchangeWidget/ExchangeWidgetContainer';
-import Map from '../Map/Map';
+// import Map from '../Map/Map';
 import DateWidgetContainer from '../DateWidget/DateWidgetContainer';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -115,7 +115,7 @@ const CountryContent = ({ currentCountry }) => {
         <Paper className={classes.paper_country}>
           <div className={classes.main_content}>
             <div className={classes.map}>
-              <Map />
+              {/* <Map /> */}
             </div>
             <div className={classes.about_country}>
               <div className={classes.name_country}>

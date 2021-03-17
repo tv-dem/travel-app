@@ -1,20 +1,22 @@
 import React, {useEffect} from 'react';
 import './ExchangeWidget.scss';
-// import store from '../../Redux/store';
 
-// const stateApp = store.getState();
+const titlesExchange = {
+  ru: "Курсы",
+  en: "Currencies",
+  uk: "Курси",
+}
 
-const ExchangeWidget: React.FC = ({fetchExchange, dataExchange, currencyCurrent}:any) => {
+const ExchangeWidget: React.FC = ({fetchExchange, dataExchange, currencyCurrent, lan}:any) => {
 
     useEffect(()=>{
-      console.log(currencyCurrent);
     fetchExchange();
  
-  },[currencyCurrent, fetchExchange]);
+  },[currencyCurrent, fetchExchange, lan]);
 
   return (
   <div className="exchangeBox" aria-hidden = "true" onClick={fetchExchange}>
-  <div className="exchangeBoxTitle">Exchange ({currencyCurrent})</div>
+  <div className="exchangeBoxTitle">{titlesExchange[lan.lan]} ({currencyCurrent})</div>
   <div className="boxExchangeContent">
   <div className="exchangeContent">EUR {dataExchange.EUR}</div>
   <div className="exchangeContent">USD {dataExchange.USD}</div>
