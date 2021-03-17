@@ -10,7 +10,7 @@ export const fetchCountriesSuccess = (Countries:any) =>({
     countries: Countries,
 })
 
-export const fetchCountriesError = (Error: string) => ({
+export const fetchCountriesError = (Error: string | null) => ({
     type: FETCH_COUNTRIES_ERROR,
     error: Error,
 });

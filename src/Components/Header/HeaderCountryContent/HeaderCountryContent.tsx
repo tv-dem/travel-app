@@ -1,16 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-import Button from '@material-ui/core/Button';
-import Login from '../Login/Login.module';
+import Login from '../Login/Login.container';
 import HeaderComp from '../HeaderComponents'
 import LanguageContainer from '../Language/LanguageContainer';
+import Logo from '../Logo/Logo'
 
 const HeaderCountryContent: React.FC = () => (
     <HeaderComp>
-      <LanguageContainer />     
-
-      <Link to="/"><Button variant="contained">Go to HOME</Button></Link>
-
+      <Logo/>
+      <LanguageContainer />       
       <Login />
     </HeaderComp>);
 export default HeaderCountryContent;

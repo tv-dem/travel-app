@@ -42,7 +42,6 @@ const mapDispatchToProps = (dispatch: any) => ({
           throw res.error;
         }
         dispatch(fetchWeatherSuccess(res));
-        console.log(res);
         return res;
       })
       .catch(error => {

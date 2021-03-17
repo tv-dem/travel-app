@@ -11,8 +11,8 @@ const ExchangeWidget: React.FC = ({fetchExchange, dataExchange, currencyCurrent,
 
     useEffect(()=>{
     fetchExchange();
- 
   },[currencyCurrent, fetchExchange, lan]);
+
 
   return (
   <div className="exchangeBox" aria-hidden = "true" onClick={fetchExchange}>

@@ -3,10 +3,13 @@ import {Redirect} from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardMedia from '@material-ui/core/CardMedia';
 import CountryTabs from './CountryTabs/CountryTabs';
 import WeatherWidgetContainer from '../WeatherWidget/WeatherWidgetContainer';
 import ExchangeWidgetContainer from '../ExchangeWidget/ExchangeWidgetContainer';
-// import Map from '../Map/Map';
+import Map from '../Map/Map';
 import DateWidgetContainer from '../DateWidget/DateWidgetContainer';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -32,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
     country_box: {
       width: '100%',
     },
-    paper_country: {      
+    paper_country: {
       width: '100%',
       padding: theme.spacing(2),
       marginBottom: '10px',
@@ -56,8 +59,10 @@ const useStyles = makeStyles((theme: Theme) =>
     main_content: {
       display: 'flex',
       flexDirection: 'column',
+      alignItems: 'center',
       [theme.breakpoints.up('lg')]: {
         flexDirection: 'row',
+        alignItems: 'end',
       },
       padding: '10px',
     },
@@ -81,9 +86,18 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     name_country: {
       margin: '15px',
+      display:"flex",
+      flexDirection:"row",
+      justifyContent:"space-around",
+      flexWrap:"wrap",
+      textAlign:"center",
     },
     name_capital: {},
     country_description: {},
+    country_img:{
+      margin: theme.spacing(1),
+      padding:"3px",
+    },
     widgets: {
       margin: '10px',
     },
@@ -96,18 +110,19 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const CountryContent = ({ currentCountry }) => {
+const CountryContent = ({ currentCountry, fetchPlaces, currentLan, language }) => {
 
+  const [{name,capital,description}]= currentCountry.localizations.filter(lan=>lan.lang===language)
   const classes = useStyles();
 
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    window.scrollTo(0, ref.current!.offsetTop);
-  });
+    window.scrollTo(0, ref.current ? ref.current!.offsetTop : 0);
+    fetchPlaces(currentCountry.id, currentLan)
+  },[currentCountry, fetchPlaces, currentLan]);
 
   if(currentCountry===null) return <Redirect to="/"/>
-  
 
   return (
     <div ref={ref} className={classes.root}>
@@ -115,21 +130,33 @@ const CountryContent = ({ currentCountry }) => {
         <Paper className={classes.paper_country}>
           <div className={classes.main_content}>
             <div className={classes.map}>
-              {/* <Map /> */}
+              <Map />
+              <Map coordinates={currentCountry.capitalLocation.coordinates} iso={currentCountry.ISOCode}/>
             </div>
             <div className={classes.about_country}>
               <div className={classes.name_country}>
                 <h1>
-                  {currentCountry.localizations[0].name},{' '}
-                  {currentCountry.localizations[0].capital}
+                  {name},{' '}
+                  {capital}
                 </h1>
+                <Card className={classes.country_img}>
+                 <CardActionArea>
+                 <CardMedia
+                   component="img"
+                   alt= {name}
+                   height="140"
+                   image={currentCountry.imageUrl}
+                   title={name}
+                 />
+               </CardActionArea>
+                </Card>
               </div>
               <div className={classes.text_field}>
                 <TextField
                   id="standard-read-only-input"
                   label="Descriptions"
                   multiline
-                  defaultValue={currentCountry.localizations[0].description}
+                  value={description}
                   InputProps={{
                     readOnly: true,
                   }}
@@ -140,7 +167,7 @@ const CountryContent = ({ currentCountry }) => {
         </Paper>
 
         <Paper className={classes.tabs}>
-          <CountryTabs />
+          <CountryTabs videoUrl={currentCountry.videoUrl}/>
         </Paper>
       </div>
       <Paper className={classes.paper_widgets}>

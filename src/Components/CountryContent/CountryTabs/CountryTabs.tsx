@@ -6,7 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Video from '../../Video/Video';
-import Gallery from '../../Gallery/Gallery';
+import GalleryContainer from '../../Gallery/GalleryContainer';
 
 interface TabPanelProps {
   children: React.ReactNode;
@@ -68,7 +68,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function AccessibleTabs(): JSX.Element {
+export default function AccessibleTabs({videoUrl}:any): JSX.Element {
   const classes = useStyles();
 
   const [value, setValue] = React.useState(0);
@@ -90,10 +90,10 @@ export default function AccessibleTabs(): JSX.Element {
 
 
       <TabPanel value={value} index={0}>
-        <Gallery/>
+        <GalleryContainer/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Video/>
+        <Video url={videoUrl}/>
       </TabPanel>
     </div>
   );

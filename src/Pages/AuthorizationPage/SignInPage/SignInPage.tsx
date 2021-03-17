@@ -87,12 +87,14 @@ const SignInPage: React.FC = () => {
           placeholder="Enter your name"
           name="firstName"
           onChange={changeName}
+          value={userData.firstName}
         />
         <InputText
           type="text"
           placeholder="Enter lastname"
           name="lastName"
           onChange={changeLastName}
+          value={userData.lastName}
         />
         <InputText
           type="text"
@@ -100,6 +102,7 @@ const SignInPage: React.FC = () => {
           name="email"
           autoComplete="on"
           onChange={changeEmail}
+          value={userData.email}
         />
         <FormField>
           <InputText
@@ -108,6 +111,7 @@ const SignInPage: React.FC = () => {
             name="password"
             autoComplete="on"
             onChange={handleSetNewPassword}
+            value={userData.newPassword}
           />
           <TogglePassword onClick={toggleVisiblePassword} />
         </FormField>
@@ -122,6 +126,7 @@ const SignInPage: React.FC = () => {
             placeholder="Password confirm"
             name="password-confirm"
             onChange={handleConfirmPassword}
+            value={userData.confirmedPassword}
           />
           <TogglePassword onClick={toggleVisibleConfirmPassword} />
         </FormField>
