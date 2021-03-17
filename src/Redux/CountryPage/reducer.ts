@@ -82,6 +82,8 @@ export function CountryPageReducer(state = initialState, action: any): any {
     }
     case FETCH_PLACES_SUCCESS: {
       const r = action.data;
+      // eslint-disable-next-line no-underscore-dangle
+      delete r._id;
       return { ...state, imageObj: r, currentPlace: r.places[0] };
     }
     case ADD_RATING:{
