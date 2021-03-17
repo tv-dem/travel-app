@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { Form, InputText, FormField, TogglePassword, InputBtnSignIn, FormFieldCaption, AlertError } from '../../../Components/styledComponents';
 
-const SignInPage: React.FC = () => {
+interface SignInPageProps {
+  language:string,
+  langData:any,
+}
+
+const SignInPage: React.FC<SignInPageProps> = ({language,langData}) => {
   const [isError, setError] = useState('');
   const [isOpenPassword, setOpenPassword] = useState(false);
   const [isOpenConfirmPassword, setOpenConfirmPassword] = useState(false);
   const [userData, setUserData] = useState({
     firstName: '',
-    lastName: '',
+    lastName: '', 
     email: '',
     newPassword: '',
     confirmedPassword: '',
@@ -54,23 +59,23 @@ const SignInPage: React.FC = () => {
 
     switch (true) {
       case (!firstName || firstName.trim().length < minNameLength || firstName[0].match(/\d/)): {
-        setError('Name should be at least 4 symbols, don\'t starts with decimal!');
+        setError(`${langData[language].signinPage_invalid_name}`);
         break;
       }
       case (!lastName || lastName.trim().length < minNameLength || lastName[0].match(/\d/)): {
-        setError('LastName should be at least 4 symbols, don\'t starts with decimal!');
+        setError(`${langData[language].signinPage_invalid_LastName}`);
         break;
       }
       case (!email || email.trim().length < minNameLength || !email.includes('@') || !email.split('@')[1].includes('.')): {
-        setError('Email should be at least 4 symbols, must contain @, and contain ends with "."');
+        setError(`${langData[language].signinPage_invalid_emale}`);
         break;
       }
       case (!newPassword.match(regExp)): {
-        setError('Password must contains a lowercase letters, an uppercase letters, number and be at least 8 characters.');
+        setError(`${langData[language].signinPage_invalid_password}`);
         break;
       }
       case (confirmedPassword !== newPassword): {
-        setError('Passwords do not match');
+        setError(`${langData[language].signinPage_invalid_password_confirme}`);
         break;
       }
       default: {
@@ -84,21 +89,21 @@ const SignInPage: React.FC = () => {
       <Form>
         <InputText
           type="text"
-          placeholder="Enter your name"
+          placeholder={langData[language].signinPage_placeholder_name}
           name="firstName"
           onChange={changeName}
           value={userData.firstName}
         />
         <InputText
           type="text"
-          placeholder="Enter lastname"
+          placeholder={langData[language].signinPage_placeholder_lastname}
           name="lastName"
           onChange={changeLastName}
           value={userData.lastName}
         />
         <InputText
           type="text"
-          placeholder="Enter E-mail"
+          placeholder={langData[language].signinPage_placeholder_emale}
           name="email"
           autoComplete="on"
           onChange={changeEmail}
@@ -107,7 +112,7 @@ const SignInPage: React.FC = () => {
         <FormField>
           <InputText
             type={isOpenPassword ? "text" : "password"}
-            placeholder="Password"
+            placeholder={langData[language].signinPage_placeholder_password}
             name="password"
             autoComplete="on"
             onChange={handleSetNewPassword}
@@ -123,7 +128,7 @@ const SignInPage: React.FC = () => {
         <FormField>
           <InputText
             type={isOpenConfirmPassword ? "text" : "password"}
-            placeholder="Password confirm"
+            placeholder={langData[language].signinPage_placeholder_password_confirm}
             name="password-confirm"
             onChange={handleConfirmPassword}
             value={userData.confirmedPassword}
@@ -132,7 +137,7 @@ const SignInPage: React.FC = () => {
         </FormField>
         <InputBtnSignIn
           type="button"
-          value="Register"
+          value={langData[language].signinPage_btn_register}
           onClick={signInAccount}
         />
       </Form>

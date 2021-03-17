@@ -23,7 +23,25 @@
         "loginPage_password": "Пароль",
         "loginPage_remembeMe": "Запомнить Меня",
         "loginPage_forgot_password": "Забыл Пароль",
-        "loginPage_log_in": "Авторизоваться"
+        "loginPage_log_in": "Авторизоваться",
+
+        "signinPage_invalid_name": "Имя должно состоять минимум из 4 символов и начинаться с буквы!",
+        "signinPage_invalid_LastName": "Фамилия должно состоять минимум из 4 символов и начинаться с буквы!",
+        "signinPage_invalid_emale": "Электронная почта должна состоять минимум из 4 символов, содержать @ и содержать в префиксе символ \".\"",
+        "signinPage_invalid_password": "Пароль должен содержать строчные буквы, прописные буквы, цифру и состоять не менее чем из 8 символов.",
+        "signinPage_invalid_password_confirme": "Пароли не совпадают",
+        "signinPage_placeholder_name": "Введите ваше имя",
+        "signinPage_placeholder_lastname": "Введите вашу фамилию",
+        "signinPage_placeholder_emale": "Введите вашу электронную почту",
+        "signinPage_placeholder_password": "Введите пароль",
+        "signinPage_placeholder_password_confirm": "Введите подтверждение пароля",
+        "signinPage_btn_register": "Зарегистрироваться",
+
+        "resetPage_invalid_emale": "Электронная почта должна состоять минимум из 4 символов, содержать @ и содержать в префиксе символ \".\"",
+        "resetPage_password_recovery": "Восстановление пароля",
+        "resetPage_send_to_email": "Введите свой адрес электронной почты, и мы отправим туда ссылку для сброса пароля.",
+        "resetPage_placeholder_emale": "Электронная почта",
+        "resetPage_btn_send": "Отправить на электронную почту"
 
     },
     "en": {
@@ -50,7 +68,25 @@
         "loginPage_password": "Password",
         "loginPage_remembeMe": "Remembe Me",
         "loginPage_forgot_password": "Forgot password",
-        "loginPage_log_in": "Log In"
+        "loginPage_log_in": "Log In",
+
+        "signinPage_invalid_name": "Name should be at least 4 symbols, don't starts with decimal!",
+        "signinPage_invalid_LastName": "LastName should be at least 4 symbols, don't starts with decimal!",
+        "signinPage_invalid_emale": "Email should be at least 4 symbols, must contain @, and contain ends with \".\"",
+        "signinPage_invalid_password": "Password must contains a lowercase letters, an uppercase letters, number and be at least 8 characters.",
+        "signinPage_invalid_password_confirme": "Passwords do not match",
+        "signinPage_placeholder_name": "Enter your name",
+        "signinPage_placeholder_lastname": "Enter lastname",
+        "signinPage_placeholder_emale": "Enter E-mail",
+        "signinPage_placeholder_password": "Password",
+        "signinPage_placeholder_password_confirm": "Password confirm",
+        "signinPage_btn_register": "Register",
+
+        "resetPage_invalid_emale": "Email should be at least 4 symbols, must contain @, and contain ends with \".\"",
+        "resetPage_password_recovery": "Password Recovery",
+        "resetPage_send_to_email": "Enter your E-mail and we will send you a link to reset your password.",
+        "resetPage_placeholder_emale": "E-mail",
+        "resetPage_btn_send": "Send E-mail"
     },
     "ukr": {
         "countryCard__capital": "Cтолиця",
@@ -76,8 +112,25 @@
         "loginPage_password": "Пароль",
         "loginPage_remembeMe": "Запам'ятати мене",
         "loginPage_forgot_password": "Забув пароль",
-        "loginPage_log_in": "Авторизуватись"
+        "loginPage_log_in": "Авторизуватись",
 
+        "signinPage_invalid_name": "Ім'я повинно складатися мінімум з 4 символів і починатися з літери!",
+        "signinPage_invalid_LastName": "Прізвище має складатися мінімум з 4 символів і починатися з літери!",
+        "signinPage_invalid_emale": "Електронна пошта повинна складатися мінімум з 4 символів, містити @ і містити в префікс символ \".\"",
+        "signinPage_invalid_password": "Пароль повинен містити малі літери, малі літери, цифри і складатися не менше ніж з 8 символів.",
+        "signinPage_invalid_password_confirme": "Паролі не співпадають",
+        "signinPage_placeholder_name": "Введіть ваше ім'я",
+        "signinPage_placeholder_lastname": "Введіть ваше прізвище",
+        "signinPage_placeholder_emale": "Введіть вашу електронну пошту",
+        "signinPage_placeholder_password": "Введіть пароль",
+        "signinPage_placeholder_password_confirm": "Введіть підтвердження пароля",
+        "signinPage_btn_register": "зареєструватися",
+
+        "resetPage_invalid_emale": "Електронна пошта повинна складатися мінімум з 4 символів, містити @ і містити в префікс символ \".\"",
+        "resetPage_password_recovery": "Відновлення паролю",
+        "resetPage_send_to_email": "Введіть свою адресу електронної пошти, і ми відправимо туди посилання для скидання пароля.",
+        "resetPage_placeholder_emale": "Електронна пошта",
+        "resetPage_btn_send": "Надіслати на електронну пошту"
 
     }
 }
