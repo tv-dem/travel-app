@@ -41,8 +41,7 @@ export function countriesReducer(state = initialState, action: any): stateType {
             return {
                 ...state,
                 countriesFind: state.countries.filter(country => {
-                    const { name, capital } = country.localizations[0]
-
+                    const [{name,capital}]= country.localizations.filter(lan=>lan.lang===action.lang)
 
                     if (fixStr(name).indexOf(fixStr(action.input)) !== -1 || fixStr(capital).indexOf(fixStr(action.input)) !== -1) return true
                     return false

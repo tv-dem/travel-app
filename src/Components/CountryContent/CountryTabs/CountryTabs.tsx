@@ -38,11 +38,13 @@ interface TabsProps {
   onChange: (event: unknown, value: number) => void;
   selectionFollowsFocus: boolean;
   value: number;
+  language:string;
+  langData:JSON
 }
 
 function TabsPanel(props: TabsProps) {
 
-  const { labelId, onChange, selectionFollowsFocus, value } = props;
+  const { labelId, onChange, selectionFollowsFocus, value, language,langData } = props;
 
   return (
     <AppBar position="static" color="default">
@@ -55,8 +57,8 @@ function TabsPanel(props: TabsProps) {
         selectionFollowsFocus={selectionFollowsFocus}
         value={value}
       >
-        <Tab label="Photo gallery" aria-controls="a11y-tabpanel-0" id="a11y-tab-0" />
-        <Tab label="Video" aria-controls="a11y-tabpanel-1" id="a11y-tab-1" />
+        <Tab label={langData[language].countryPage_countryContent_countryTabs_foto_gallery} aria-controls="a11y-tabpanel-0" id="a11y-tab-0" />
+        <Tab label={langData[language].countryPage_countryContent_countryTabs_video} aria-controls="a11y-tabpanel-1" id="a11y-tab-1" />
       </Tabs>
     </AppBar>
   );
@@ -68,7 +70,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function AccessibleTabs({videoUrl}:any): JSX.Element {
+export default function AccessibleTabs({videoUrl,language,langData}:any): JSX.Element {
   const classes = useStyles();
 
   const [value, setValue] = React.useState(0);
@@ -86,6 +88,8 @@ export default function AccessibleTabs({videoUrl}:any): JSX.Element {
         selectionFollowsFocus
         onChange={handleChange}
         value={value}
+        language={language}
+        langData={langData}
       />
 
 

@@ -1,20 +1,83 @@
 {
     "ru": {
         "countryCard__capital": "Столица",
+
         "mainPage_language_setLang": "выбери язык",
         "mainPage_Search_enter_country": "Введите название страны или столицы",
         "mainPage_Search_search_country": "Поиск страны...",
         "mainPage_Login_sign_in": "Войти",
-        "mainPage_Login_sign_up": "Регистрация"
+        "mainPage_Login_sign_up": "Регистрация",
+
+        "countryPage_countryContent_description": "Описание",
+        "countryPage_countryContent_countryTabs_foto_gallery": "Фото галерея",
+        "countryPage_countryContent_countryTabs_video": "Видео",
+
+        "autorizationPage_goTo_travelApp": "На главную",
+        "autorizationPage_login": "Авторизоваться",
+        "autorizationPage_sign_in": "Войти",
+        "autorizationPage_invalidPassw": "Неправильный адрес электронной почты или пароль!",
+        "autorizationPage_social_reg": "авторизуйтесь через соцсети",
+
+        "loginPage_userName": "Имя пользователя",
+        "loginPage_emale": "Электронная почта",
+        "loginPage_password": "Пароль",
+        "loginPage_remembeMe": "Запомнить Меня",
+        "loginPage_forgot_password": "Забыл Пароль",
+        "loginPage_log_in": "Авторизоваться"
 
     },
     "en": {
         "countryCard__capital": "Capital",
+
         "mainPage_language_setLang": "set language",
         "mainPage_Search_enter_country": "Enter the name of the country or capital",
         "mainPage_Search_search_country": "Search country...",
         "mainPage_Login_sign_in": "Sign in",
-        "mainPage_Login_sign_up": "Sign up"
+        "mainPage_Login_sign_up": "Sign up",
+
+        "countryPage_countryContent_description": "Description",
+        "countryPage_countryContent_countryTabs_foto_gallery": "Photo gallery",
+        "countryPage_countryContent_countryTabs_video": "Video",
+
+        "autorizationPage_goTo_travelApp": "To home",
+        "autorizationPage_login": "Log In",
+        "autorizationPage_sign_in": "Sign In",
+        "autorizationPage_invalidPassw": "Invalid E-mail or password!",
+        "autorizationPage_social_reg": "sign in via social networks",
+
+        "loginPage_userName": "UserName",
+        "loginPage_emale": "E-mail",
+        "loginPage_password": "Password",
+        "loginPage_remembeMe": "Remembe Me",
+        "loginPage_forgot_password": "Forgot password",
+        "loginPage_log_in": "Log In"
+    },
+    "ukr": {
+        "countryCard__capital": "Cтолиця",
+
+        "mainPage_language_setLang": "вибери мову",
+        "mainPage_Search_enter_country": "Введіть назву країни або столиці",
+        "mainPage_Search_search_country": "Пошук країни...",
+        "mainPage_Login_sign_in": "Увійти",
+        "mainPage_Login_sign_up": "Реєстрація",
+
+        "countryPage_countryContent_description": "Опис",
+        "countryPage_countryContent_countryTabs_foto_gallery": "Фото галерея",
+        "countryPage_countryContent_countryTabs_video": "Відео",
+
+        "autorizationPage_goTo_travelApp": "На головну",
+        "autorizationPage_login": "Авторизуватись",
+        "autorizationPage_sign_in": "Увійти",
+        "autorizationPage_invalidPassw": "Неправильна адреса електронної пошти або пароль!",
+        "autorizationPage_social_reg": "авторизуйтесь через соцмережі",
+
+        "loginPage_userName": "Ім'я користувача",
+        "loginPage_emale": "Електронна пошта",
+        "loginPage_password": "Пароль",
+        "loginPage_remembeMe": "Запам'ятати мене",
+        "loginPage_forgot_password": "Забув пароль",
+        "loginPage_log_in": "Авторизуватись"
+
 
     }
 }

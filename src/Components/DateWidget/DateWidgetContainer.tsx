@@ -53,7 +53,7 @@ const dayTranslate = {
       'December',
     ],
   },
-  uk:{
+  ukr:{
     weekName: [
       'Понеділок',
       'Вівторок',

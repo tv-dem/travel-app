@@ -30,7 +30,7 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = (dispatch: any) => ({
   setCurrentCountry: (country: CountryType) =>
     dispatch(setCurrentCountry(country)),
-  filterCountries: (input: string) => dispatch(filterCountries(input)),
+  filterCountries: (input: string,lang:string) => dispatch(filterCountries(input,lang)),
   fetchCountries: () => {
     dispatch(fetchCountriesPending());
     fetch(MAIN_URL)
