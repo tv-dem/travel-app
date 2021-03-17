@@ -54,3 +54,25 @@ justify-content: space-around;
 ul {
   margin-bottom: 0;
 }
+
+@media screen and (max-width: 600px) {
+  .footer__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  }
+
+  .footer__year {
+    text-align: center;
+  }
+
+
+.footer__rs-link-img {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+}
