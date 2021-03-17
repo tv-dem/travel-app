@@ -28,7 +28,7 @@ const Login: React.FC = ({language}:any) => {
         <Link to="/authorization">
           <Button variant="contained">{langData[language].mainPage_Login_sign_in}</Button>
         </Link>
-        <Link to="/reset">
+        <Link to="/authorization/registration">
           <Button variant="contained">{langData[language].mainPage_Login_sign_up}</Button>
         </Link>
       </div>

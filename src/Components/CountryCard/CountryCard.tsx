@@ -41,7 +41,7 @@ const CountryCard = ( props:any ) => {
           title={name}
         />
         <CardContent>        
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography className="card_content-name" gutterBottom variant="h5" component="h2">
           {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
