@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ContentTitle, UserForm, FormField, InputText, TogglePassword, FormFieldCaption, ButtonSave, AlertError, AlertSuccess } from '../../../Components/styledComponents';
+import {
+  ContentTitle,
+  UserForm,
+  FormField,
+  InputText,
+  TogglePassword,
+  FormFieldCaption,
+  ButtonSave,
+  AlertError,
+  AlertSuccess,
+} from '../../../Components/styledComponents';
 
 const InputPassword = styled(InputText)`
   padding-right: 48px;
@@ -8,14 +18,20 @@ const InputPassword = styled(InputText)`
 
 const ButtonCancel = styled(ButtonSave)`
   color: #000;
-  background-color: rgba(0,0,0,0.04);
+  background-color: rgba(0, 0, 0, 0.04);
 `;
 
 interface UserPasswordPageProps {
   toggleDisplay: () => void;
+  language: string;
+  langData: any;
 }
 
-const UserPasswordPage: React.FC<UserPasswordPageProps> = ({ toggleDisplay }) => {
+const UserPasswordPage: React.FC<UserPasswordPageProps> = ({
+  toggleDisplay,
+  language,
+  langData,
+}) => {
   const [isOpenPassword, setOpenPassword] = useState(false);
   const [isError, setError] = useState('');
   const [isSuccess, setSuccess] = useState('');
@@ -23,30 +39,40 @@ const UserPasswordPage: React.FC<UserPasswordPageProps> = ({ toggleDisplay }) =>
   const [confirmedPassword, setConfirmedPassword] = useState('');
 
   const toggleVisiblePassword = (): void => {
-    setOpenPassword((state) => !state);
+    setOpenPassword(state => !state);
   };
 
-  const handleSetNewPassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleSetNewPassword = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
     setNewPassword(event.target.value.trim());
     setError('');
   };
 
-  const handleConfirmPassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleConfirmPassword = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
     setConfirmedPassword(event.target.value.trim());
     setError('');
   };
 
   const handleBtnSaveClick = (): void => {
     const minLengthPassword = 8;
-    const regExp = new RegExp(`^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([^_])([a-zA-Z0-9]){${minLengthPassword},}$`);
+    const regExp = new RegExp(
+      `^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([^_])([a-zA-Z0-9]){${minLengthPassword},}$`,
+    );
 
     if (!newPassword.match(regExp)) {
-      setError('Password must contains a lowercase letters, an uppercase letters, number and be at least 8 characters.');
+      setError(`${langData[language].userPage_passwordPage_invalid_password}`);
     }
 
     if (confirmedPassword !== newPassword) {
-      setError('Passwords do not match');
-      setSuccess('Password changed');
+      setError(
+        `${langData[language].userPage_passwordPage_invalid_password_confirme}`,
+      );
+      setSuccess(
+        `${langData[language].userPage_passwordPage_password_changed}`,
+      );
     }
 
     // update password backend
@@ -62,31 +88,36 @@ const UserPasswordPage: React.FC<UserPasswordPageProps> = ({ toggleDisplay }) =>
   return (
     <>
       <ContentTitle>
-        Password
+        {langData[language].userPage_passwordPage_password_title}
       </ContentTitle>
       <UserForm>
         <FormField>
           <InputPassword
-            type={isOpenPassword ? "text" : "password"}
-            id='password-new'
-            name='password-new'
-            autoComplete='on'
-            placeholder='New password'
+            type={isOpenPassword ? 'text' : 'password'}
+            id="password-new"
+            name="password-new"
+            autoComplete="on"
+            placeholder={
+              langData[language].userPage_passwordPage_placeholder_new_password
+            }
             value={newPassword}
             onChange={handleSetNewPassword}
           />
           <TogglePassword onClick={toggleVisiblePassword} />
         </FormField>
         <FormFieldCaption>
-          Password must contains a lowercase letters, an uppercase letters, number and be at least 8&nbsp;characters.
+          {langData[language].userPage_passwordPage_invalid_password}
         </FormFieldCaption>
         <FormField>
           <InputPassword
-            type={isOpenPassword ? "text" : "password"}
-            id='password-confirm'
-            name='password-new'
-            autoComplete='on'
-            placeholder='Confirm new password'
+            type={isOpenPassword ? 'text' : 'password'}
+            id="password-confirm"
+            name="password-new"
+            autoComplete="on"
+            placeholder={
+              langData[language]
+                .userPage_passwordPage_placeholder_new_password_confirm
+            }
             value={confirmedPassword}
             onChange={handleConfirmPassword}
           />
@@ -95,25 +126,24 @@ const UserPasswordPage: React.FC<UserPasswordPageProps> = ({ toggleDisplay }) =>
         {isError && <AlertError>{isError}</AlertError>}
         {isSuccess && <AlertSuccess>{isSuccess}</AlertSuccess>}
         <ButtonSave
-          type='button'
-          name='submitAction'
-          value='Save'
+          type="button"
+          name="submitAction"
+          value="Save"
           onClick={handleBtnSaveClick}
         >
-          Save
-          </ButtonSave>
+          {langData[language].userPage_passwordPage_btn_save}
+        </ButtonSave>
         <ButtonCancel
-          type='button'
-          name='submitAction'
-          value='Cancel'
+          type="button"
+          name="submitAction"
+          value="Cancel"
           onClick={toggleDisplay}
         >
-          Cancel
-          </ButtonCancel>
+          {langData[language].userPage_passwordPage_btn_cancel}
+        </ButtonCancel>
       </UserForm>
     </>
   );
 };
 
 export default UserPasswordPage;
-

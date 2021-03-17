@@ -6,6 +6,8 @@ import ProfileMenu from './ProfileMenu';
 import UserContentPage from './UserContentPage';
 import UserPasswordPage from './UserPasswordPage';
 import { ReactComponent as ArrowLeft } from '../../public/arrow-left.svg';
+import langData from '../../langData/langData.json';
+
 
 const Header = styled.header`
   display: block;
@@ -56,7 +58,11 @@ const Content = styled.div<{ isDisplay: boolean }>`
   }
 `;
 
-const UserPage: React.FC = () => {
+interface UserPageProps {
+  language: string;
+}
+
+const UserPage: React.FC<UserPageProps> = ({language}) => {
   const addBodyClass = (className: string): void => document.body.classList.add(className);
   const removeBodyClass = (className: string): void => document.body.classList.remove(className);
   const [isDisplay, setDisplay] = useState(true);
@@ -78,18 +84,18 @@ const UserPage: React.FC = () => {
       <Header>
         <BackButtonStyled to="/">
           <ArrowLeft />
-          <span>Travel-app</span>
+          <span>{langData[language].userPage_goTo_travelApp}</span>
         </BackButtonStyled>
       </Header>
       <Container>
         <Section>
           <Aside isDisplay={isDisplay}>
-            <ProfileMenu toggleDisplay={toggleActivePage} />
+            <ProfileMenu toggleDisplay={toggleActivePage} langData={langData} language={language} />
           </Aside>
           <Content isDisplay={isDisplay}>
             <Switch>
-              <Route path='/user/account' render={() => <UserContentPage toggleDisplay={toggleActivePage} />} />
-              <Route exact path='/user/password' render={() => <UserPasswordPage toggleDisplay={toggleActivePage} />} />
+              <Route path='/user/account' render={() => <UserContentPage toggleDisplay={toggleActivePage} langData={langData} language={language} />} />
+              <Route exact path='/user/password' render={() => <UserPasswordPage toggleDisplay={toggleActivePage} langData={langData} language={language} />} />
             </Switch>
           </Content>
         </Section>

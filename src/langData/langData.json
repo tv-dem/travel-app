@@ -41,7 +41,37 @@
         "resetPage_password_recovery": "Восстановление пароля",
         "resetPage_send_to_email": "Введите свой адрес электронной почты, и мы отправим туда ссылку для сброса пароля.",
         "resetPage_placeholder_emale": "Электронная почта",
-        "resetPage_btn_send": "Отправить на электронную почту"
+        "resetPage_btn_send": "Отправить на электронную почту",
+
+        "userPage_goTo_travelApp": "На главную",
+        "userPage_profileMenu_title": "Профиль",
+        "userPage_profileMenu_exit": "Выйти",
+        "userPage_passwordPage_invalid_password": "Пароль должен содержать строчные буквы, прописные буквы, цифру и состоять не менее чем из 8 символов.",
+        "userPage_passwordPage_invalid_password_confirme": "Пароли не совпадают",
+        "userPage_passwordPage_password_changed": "Пароль изменен",
+        "userPage_passwordPage_password_title": "Пароль",
+        "userPage_passwordPage_placeholder_new_password": "Введите новый пароль",
+        "userPage_passwordPage_placeholder_new_password_confirm": "Подтвердите новый пароль",
+        "userPage_passwordPage_btn_save": "Изменить",
+        "userPage_passwordPage_btn_cancel": "Отменить",
+
+        "userPage_userContentPage_invalid_name": "Имя должно состоять минимум из 4 символов и начинаться с буквы!",
+        "userPage_userContentPage_invalid_LastName": "Фамилия должно состоять минимум из 4 символов и начинаться с буквы!",
+        "userPage_userContentPage_invalid_emale": "Электронная почта должна состоять минимум из 4 символов, содержать @ и содержать в префиксе символ \".\"",
+        "userPage_userContentPage_persInf_changed": "Личная информация изменена",
+        "userPage_userContentPage_invalid_image": "Только изображение, пожалуйста ....",
+        "userPage_userContentPage_photo": "фотография",
+        "userPage_userContentPage_personal_info": "Персональная информация",
+        "userPage_userContentPage_placeholder_name": "Имя",
+        "userPage_userContentPage_placeholder_lastName": "Фамилия",
+        "userPage_userContentPage_placeholder_emale": "Электронная почта",
+        "userPage_userContentPage_placeholder_addFoto": "Добавьте свое фото",
+        "userPage_userContentPage_btn_save": "Сохранить",
+        "userPage_userContentPage_btn_cancel": "Отменить",
+
+        "userViewPage_title": "ПОЛЬЗОВАТЕЛЬСКИЕ НАСТРОЙКИ",
+        "userViewPage_userBar_profile": "Профиль",
+        "userViewPage_userBar_exit": "Выйти"
 
     },
     "en": {
@@ -86,7 +116,39 @@
         "resetPage_password_recovery": "Password Recovery",
         "resetPage_send_to_email": "Enter your E-mail and we will send you a link to reset your password.",
         "resetPage_placeholder_emale": "E-mail",
-        "resetPage_btn_send": "Send E-mail"
+        "resetPage_btn_send": "Send E-mail",
+
+        "userPage_goTo_travelApp": "To home",
+        "userPage_profileMenu_title": "Profile",
+        "userPage_profileMenu_exit": "Exit",
+
+        "userPage_passwordPage_invalid_password": "Password must contains a lowercase letters, an uppercase letters, number and be at least 8 characters.",
+        "userPage_passwordPage_invalid_password_confirme": "Passwords do not match",
+        "userPage_passwordPage_password_changed": "Password changed",
+        "userPage_passwordPage_password_title": "Password",
+        "userPage_passwordPage_placeholder_new_password": "New password",
+        "userPage_passwordPage_placeholder_new_password_confirm": "Confirm new password",
+        "userPage_passwordPage_btn_save": "Save",
+        "userPage_passwordPage_btn_cancel": "Cancel",
+
+        "userPage_userContentPage_invalid_name": "Name should be at least 4 symbols, don't starts with decimal!",
+        "userPage_userContentPage_invalid_LastName": "LastName should be at least 4 symbols, don't starts with decimal!",
+        "userPage_userContentPage_invalid_emale": "Email should be at least 4 symbols, must contain @, and contain ends with \".\"",
+        "userPage_userContentPage_persInf_changed": "Personal information changed",
+        "userPage_userContentPage_invalid_image": "Image only please....",
+        "userPage_userContentPage_photo": "photo",
+        "userPage_userContentPage_personal_info": "Personal Information",
+        "userPage_userContentPage_placeholder_name": "Name",
+        "userPage_userContentPage_placeholder_lastName": "LastName",
+        "userPage_userContentPage_placeholder_emale": "E-mail",
+        "userPage_userContentPage_placeholder_addFoto": "Add your photo",
+        "userPage_userContentPage_btn_save": "Save",
+        "userPage_userContentPage_btn_cancel": "Cancel",
+
+        "userViewPage_title": "USER SETTINGS",
+        "userViewPage_userBar_profile": "Profile",
+        "userViewPage_userBar_exit": "Exit"
+
     },
     "ukr": {
         "countryCard__capital": "Cтолиця",
@@ -130,7 +192,38 @@
         "resetPage_password_recovery": "Відновлення паролю",
         "resetPage_send_to_email": "Введіть свою адресу електронної пошти, і ми відправимо туди посилання для скидання пароля.",
         "resetPage_placeholder_emale": "Електронна пошта",
-        "resetPage_btn_send": "Надіслати на електронну пошту"
+        "resetPage_btn_send": "Надіслати на електронну пошту",
+
+        "userPage_goTo_travelApp": "На головну",
+        "userPage_profileMenu_title": "Профіль",
+        "userPage_profileMenu_exit": "Вийти",
+
+        "userPage_passwordPage_invalid_password": "Пароль повинен містити малі літери, малі літери, цифри і складатися не менше ніж з 8 символів.",
+        "userPage_passwordPage_invalid_password_confirme": "Паролі не співпадають",
+        "userPage_passwordPage_password_changed": "Пароль змінений",
+        "userPage_passwordPage_password_title": "Пароль",
+        "userPage_passwordPage_placeholder_new_password": "Введіть новий пароль",
+        "userPage_passwordPage_placeholder_new_password_confirm": "Підтвердіть новий пароль",
+        "userPage_passwordPage_btn_save": "Змінити",
+        "userPage_passwordPage_btn_cancel": "Скасувати",
+
+        "userPage_userContentPage_invalid_name": "Ім'я повинно складатися мінімум з 4 символів і починатися з літери!",
+        "userPage_userContentPage_invalid_LastName": "Прізвище має складатися мінімум з 4 символів і починатися з літери!",
+        "userPage_userContentPage_invalid_emale": "Електронна пошта повинна складатися мінімум з 4 символів, містити @ і містити в префікс символ \".\"",
+        "userPage_userContentPage_persInf_changed": "Особиста інформація змінена",
+        "userPage_userContentPage_invalid_image": "Только изображение, пожалуйста ....",
+        "userPage_userContentPage_photo": "фотографія",
+        "userPage_userContentPage_personal_info": "Персональна інформація",
+        "userPage_userContentPage_placeholder_name": "ім'я",
+        "userPage_userContentPage_placeholder_lastName": "Прізвище",
+        "userPage_userContentPage_placeholder_emale": "Електронна пошта",
+        "userPage_userContentPage_placeholder_addFoto": "Додайте своє фото",
+        "userPage_userContentPage_btn_save": "Змінити",
+        "userPage_userContentPage_btn_cancel": "Скасувати",
+
+        "userViewPage_title": "КОРИСТУВАЛЬНИЦЬКІ НАЛАШТУВАННЯ",
+        "userViewPage_userBar_profile": "Профіль",
+        "userViewPage_userBar_exit": "Вийти"
 
     }
 }

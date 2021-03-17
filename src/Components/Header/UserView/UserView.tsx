@@ -6,6 +6,7 @@ import Dialog from '@material-ui/core/Dialog';
 import { DialogContent } from '@material-ui/core';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import UserBar from '../../UserBar';
+import langData from '../../../langData/langData.json'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -38,7 +39,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const UserView = () => {
+interface UserViewProps {
+  language: string;
+}
+
+const UserView:React.FC<UserViewProps> = ({language}) => {
   const [showUserBar, setUserBar] = useState(false);
   const s = useStyles();
   return (
@@ -48,8 +53,8 @@ const UserView = () => {
         onClose={()=>{setUserBar(false)}}
       >
         <DialogContent className={s.dialogContent}>
-          <DialogTitle><h2>USER SETTINGS</h2></DialogTitle>
-          <UserBar/>
+          <DialogTitle><h2>{langData[language].userViewPage_title}</h2></DialogTitle>
+          <UserBar langData={langData} language={language}/>
         </DialogContent>
       </Dialog>
         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={s.large}/>

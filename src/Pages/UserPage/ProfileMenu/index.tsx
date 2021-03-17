@@ -26,7 +26,7 @@ const SideBarHeader = styled.div`
   line-height: 28px;
   padding: 0 16px 20px 16px;
   font-weight: normal;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -48,7 +48,7 @@ const MenuItem = styled.li`
 `;
 
 const MenuLink = styled(NavLink)`
-  color: rgba(0,0,0,0.48);
+  color: rgba(0, 0, 0, 0.48);
   font-size: 16px;
   line-height: 24px;
   text-decoration: none;
@@ -75,7 +75,7 @@ const MenuLink = styled(NavLink)`
     font-weight: normal;
     color: #000;
     margin: 0;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 
     &:before {
       content: '';
@@ -120,20 +120,26 @@ const MenuLink = styled(NavLink)`
 
 interface ProfileMenuProps {
   toggleDisplay: () => void;
+  language: string;
+  langData: any;
 }
 
-const ProfileMenu: React.FC<ProfileMenuProps> = ({ toggleDisplay }) => {
+const ProfileMenu: React.FC<ProfileMenuProps> = ({
+  toggleDisplay,
+  language,
+  langData,
+}) => {
   const dataForList = [
     {
       id: 1,
       link: '/user/account',
-      title: 'Personal Information',
+      title: `${langData[language].userPage_userContentPage_personal_info}`,
       classN: '--account',
     },
     {
       id: 2,
       link: '/user/password',
-      title: 'Password',
+      title: `${langData[language].userPage_passwordPage_password_title}`,
       classN: '--password',
     },
   ];
@@ -141,28 +147,26 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({ toggleDisplay }) => {
   return (
     <>
       <SideBarHeader>
-        Profile
+        {langData[language].userPage_profileMenu_title}
       </SideBarHeader>
       <Menu>
-        {dataForList.map(({ id, link, title, classN }): JSX.Element => (
-          <MenuItem key={id}>
-            <MenuLink
-              to={link}
-              className={classN}
-              onClick={toggleDisplay}
-            >
-              {title}
-            </MenuLink>
-          </MenuItem>
-        )
+        {dataForList.map(
+          ({ id, link, title, classN }): JSX.Element => (
+            <MenuItem key={id}>
+              <MenuLink to={link} className={classN} onClick={toggleDisplay}>
+                {title}
+              </MenuLink>
+            </MenuItem>
+          ),
         )}
         <MenuItem>
           <MenuLink
-            exact to='/'
+            exact
+            to="/"
             // onClick={() => exit backend}
-            className='--exit'
+            className="--exit"
           >
-            Exit
+            {langData[language].userPage_profileMenu_exit}
           </MenuLink>
         </MenuItem>
       </Menu>

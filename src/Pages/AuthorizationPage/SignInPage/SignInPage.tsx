@@ -121,7 +121,7 @@ const SignInPage: React.FC<SignInPageProps> = ({language,langData}) => {
           <TogglePassword onClick={toggleVisiblePassword} />
         </FormField>
         <FormFieldCaption>
-          Password must contains a lowercase letters, an uppercase letters, number and be at least 8 characters.
+        {langData[language].signinPage_invalid_password}
         </FormFieldCaption>
         {isError && <AlertError>{isError}</AlertError>}
         {/* {isSuccess && <AlertSuccess>{isSuccess}</AlertSuccess>} */}
