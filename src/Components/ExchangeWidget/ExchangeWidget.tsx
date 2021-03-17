@@ -4,7 +4,7 @@ import './ExchangeWidget.scss';
 const titlesExchange = {
   ru: "Курсы",
   en: "Currencies",
-  uk: "Курси",
+  ukr: "Курси",
 }
 
 const ExchangeWidget: React.FC = ({fetchExchange, dataExchange, currencyCurrent, lan}:any) => {
