@@ -25,7 +25,6 @@ const initialState: stateType = {
 const languageReducer = (state = initialState, action: any):stateType => {
   switch (action.type) {
     case CHANGE_LANGUAGE: {
-      console.log(state);
       return {
         ...state, selectedLanguage: state.languages.find(({ lan }) => lan === action.lan)!,
       };

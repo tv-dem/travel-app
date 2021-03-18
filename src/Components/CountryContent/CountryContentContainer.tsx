@@ -4,10 +4,10 @@ import { getCurrentCountry } from '../../Redux/GetApi/reducer';
 import { fetchPlacesErrorAC, fetchPlacesPendingAC, fetchPlacesSuccessAC } from '../../Redux/CountryPage/actions';
 
 const mapStateToProps = (state: any) => ({
-  language: state.language.selectedLanguage.lan,
-  currentCountry: getCurrentCountry(state.getCountries),
-  currentLan: state.language.selectedLanguage.lan,
-});
+    language: state.language.selectedLanguage.lan,
+    currentCountry: getCurrentCountry(state.getCountries),
+    currentLan: state.language.selectedLanguage.lan,
+  })
 
 const mapDispatchToProps = (dispatch) => ({
   fetchPlaces: (id, lan) => {

@@ -130,7 +130,7 @@ const CountryContent = ({ currentCountry, fetchPlaces, currentLan, language }) =
       <div className={classes.country_box}>
         <Paper className={classes.paper_country}>
           <div className={classes.main_content}>
-            <div className={classes.map}>       
+            <div className={classes.map}>
               <Map coordinates={currentCountry.capitalLocation.coordinates} iso={currentCountry.ISOCode}/>
             </div>
             <div className={classes.about_country}>
@@ -171,9 +171,9 @@ const CountryContent = ({ currentCountry, fetchPlaces, currentLan, language }) =
         </Paper>
       </div>
       <Paper className={classes.paper_widgets}>
-        <div className={classes.widgets}>
+         <div className={classes.widgets}>
           <DateWidgetContainer />
-        </div>
+         </div>
         <div className={classes.widgets}>
           <WeatherWidgetContainer />
         </div>
