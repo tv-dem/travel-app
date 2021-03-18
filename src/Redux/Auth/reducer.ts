@@ -1,4 +1,10 @@
-import { FETCH_LOG_IN_SUCCESS, FETCH_LOG_IN_ERROR, FETCH_SIGN_IN_SUCCESS, REMOVE_LOG_IN_ERROR } from './actionsTypes';
+import {
+  FETCH_LOG_IN_SUCCESS,
+  FETCH_LOG_IN_ERROR,
+  FETCH_SIGN_IN_SUCCESS,
+  REMOVE_LOG_IN_ERROR,
+  FETCH_SIGN_IN_ERROR, REMOVE_SIGN_IN_ERROR, SET_SIGN_IN_ERROR, REMOVE_SIGN_IN_SUCCESS, LOGOUT, CLEAR_MESSAGES,
+} from './actionsTypes';
 
 type StateType = {
   userName: null | string,
@@ -8,6 +14,8 @@ type StateType = {
   photoUrl: null | string,
   isLogIn: boolean,
   isErrorLogIn: string,
+  isErrorSignIn: string,
+  isSuccessSignIn: string
 }
 
 const initState:StateType = {
@@ -18,25 +26,46 @@ const initState:StateType = {
   photoUrl: null,
   isLogIn: false,
   isErrorLogIn: '',
+  isErrorSignIn: '',
+  isSuccessSignIn: '',
 }
 
 const AuthReducer = (state = initState, action) => {
-  console.log(action);
   switch (action.type){
     case FETCH_SIGN_IN_SUCCESS:{
-      return state;
+      return { ...initState, isSuccessSignIn: action.message };
     }
     case REMOVE_LOG_IN_ERROR: {
       return {...state, isErrorLogIn: ''}
     }
+    case REMOVE_SIGN_IN_ERROR: {
+      return {...state, isErrorSignIn: ''}
+    }
+    case SET_SIGN_IN_ERROR:{
+      return {...state, isErrorSignIn: action.error}
+    }
+    case REMOVE_SIGN_IN_SUCCESS: {
+      return {...state, isSuccessSignIn: ''}
+    }
+    case FETCH_SIGN_IN_ERROR: {
+      return { state, isErrorSignIn: `error: ${action.err.message}` };
+    }
     case FETCH_LOG_IN_ERROR: {
-      console.log(action)
       return { initState, isErrorLogIn: `error: ${action.err.message}` };
     }
+    case LOGOUT: {
+      return {...initState}
+    }
+    case CLEAR_MESSAGES:{
+      return {...state, isErrorLogIn: '', isErrorSignIn: '', isSuccessSignIn: ''}
+    }
     case FETCH_LOG_IN_SUCCESS:{
-      const {name, lastName, token, url, mail} = action;
-      console.log(token, 'sldjflkdsjflk');
-      return { ...state, userName: name, lastName, eMail: mail, photoUrl: url, isLogIn: token };
+      const { username,
+        lastname,
+        email,
+        photoUrl,
+        token,} = action;
+      return { ...state, userName: username, lastName: lastname, eMail: email, photoUrl, isLogIn: token };
     }
     default:
       return state;

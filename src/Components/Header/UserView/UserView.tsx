@@ -39,12 +39,15 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }),
 );
+//
+// interface UserViewProps {
+//   language: string;
+//   name: string;
+//   lastname: string;
+//   photoUrl: string;
+// }
 
-interface UserViewProps {
-  language: string;
-}
-
-const UserView:React.FC<UserViewProps> = ({language}) => {
+const UserView = ({language, name, lastname, photoUrl, logout}:any) => {
   const [showUserBar, setUserBar] = useState(false);
   const s = useStyles();
   return (
@@ -55,11 +58,12 @@ const UserView:React.FC<UserViewProps> = ({language}) => {
       >
         <DialogContent className={s.dialogContent}>
           <DialogTitle><h2>{langData[language].userViewPage_title}</h2></DialogTitle>
-          <UserBar langData={langData} language={language}/>
+          <UserBar logout={logout} langData={langData} language={language}/>
+
         </DialogContent>
       </Dialog>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={s.large}/>
-        <h4 className={s.aaa}>Tatyana Demchuk</h4>
+        <Avatar alt={photoUrl} className={s.large}/>
+        <h4 className={s.aaa}>{name} {lastname}</h4>
         <SettingsIcon className={s.settings} onClick={()=>setUserBar(!showUserBar)}/>
     </div>
   );

@@ -1,5 +1,10 @@
 import { connect } from 'react-redux';
-import { fetchLogInError, fetchLogInSuccess, removeLogInError } from '../../../Redux/Auth/actions';
+import {
+  clearMessages,
+  fetchLogInError,
+  fetchLogInSuccess,
+  removeLogInError,
+} from '../../../Redux/Auth/actions';
 import LogInPage from './LogInPage';
 
 const mapDispatchToProps = (dispatch) => ({
@@ -25,6 +30,7 @@ const mapDispatchToProps = (dispatch) => ({
       .catch((err) => dispatch(fetchLogInError(err)));
   },
   removeLogInError: () => dispatch(removeLogInError()),
+  clearState: () => dispatch(clearMessages()),
 })
 
 const mapStateToProps = ({auth}) => ({

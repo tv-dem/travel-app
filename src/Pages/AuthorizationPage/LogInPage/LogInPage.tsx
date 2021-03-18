@@ -35,10 +35,12 @@ const FormOptions = styled.div`
 //   langData:any,
 // }
 
-const LogInPage = ({ onToggleErrorComponent,language,langData,onFetch, isError,removeLogInError,isLogIn }:any) => {
+const LogInPage = ({ onToggleErrorComponent,language,langData,onFetch, isError,removeLogInError,isLogIn, clearState }:any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isShow, setShow] = useState(false);
+
+  useEffect(()=> () => clearState(), [clearState])
 
   const toggleVisiblePassword = (): void => {
     setShow((state) => (!state));

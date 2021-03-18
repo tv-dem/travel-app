@@ -46,7 +46,7 @@ function IconContainer(props: any) {
   return <span {...other}>{customIcons[value].icon}</span>;
 }
 
-const SimpleRating = ({currentRating, onSetRating}) => (
+const SimpleRating = ({currentRating, onSetRating, isLogIn}) => (
     <div>
       <Box component="fieldset" mb={3} borderColor="transparent">
         <StyledRating
@@ -54,6 +54,7 @@ const SimpleRating = ({currentRating, onSetRating}) => (
           getLabelText={(value: number) => customIcons[value].label}
           IconContainerComponent={IconContainer}
           value={currentRating}
+          readOnly={!isLogIn}
           onChange={(event, newValue) => {
             onSetRating(newValue);
           }}

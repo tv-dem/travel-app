@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import Login from './Login.module';
 
-const mapStateToProps = (state:any) => ({
-    language:state.language.selectedLanguage.lan,
+const mapStateToProps = ({auth, language}) => ({
+    language:language.selectedLanguage.lan,
+    isLogIn: auth.isLogIn,
   });
 
-const LanguageContainer = connect(mapStateToProps)(Login);
+const LoginContainer = connect(mapStateToProps)(Login);
 
-export default LanguageContainer;
+export default LoginContainer;

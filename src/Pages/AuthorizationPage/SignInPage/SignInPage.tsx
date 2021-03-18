@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
-import { Form, InputText, FormField, TogglePassword, InputBtnSignIn, FormFieldCaption, AlertError } from '../../../Components/styledComponents';
+import React, { useEffect, useState } from 'react';
+import {
+  Form,
+  InputText,
+  FormField,
+  TogglePassword,
+  InputBtnSignIn,
+  FormFieldCaption,
+  AlertError,
+  AlertSuccess,
+} from '../../../Components/styledComponents';
 
-interface SignInPageProps {
-  language:string,
-  langData:any,
-}
+// interface SignInPageProps {
+//   language:string,
+//   langData:any,
+// }
 
-const SignInPage: React.FC<SignInPageProps> = ({language,langData}) => {
-  const [isError, setError] = useState('');
+const SignInPage = ({language,langData, onFetch, removeSignInError, isError, isSuccess, setSignInError, removeSignInSuccess, clearState}:any) => {
+  useEffect(()=>()=>clearState(), [clearState]);
   const [isOpenPassword, setOpenPassword] = useState(false);
   const [isOpenConfirmPassword, setOpenConfirmPassword] = useState(false);
   const [userData, setUserData] = useState({
     firstName: '',
-    lastName: '', 
+    lastName: '',
     email: '',
     newPassword: '',
     confirmedPassword: '',
@@ -28,27 +37,32 @@ const SignInPage: React.FC<SignInPageProps> = ({language,langData}) => {
 
   const changeName = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setUserData(() => ({ ...userData, 'firstName': event.target.value.trim() }));
-    setError('');
+    removeSignInError();
+    removeSignInSuccess();
   };
 
   const changeLastName = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setUserData(() => ({ ...userData, 'lastName': event.target.value.trim() }));
-    setError('');
+    removeSignInError();
+    removeSignInSuccess();
   };
 
   const changeEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setUserData(() => ({ ...userData, 'email': event.target.value.trim() }));
-    setError('');
+    removeSignInError();
+    removeSignInSuccess();
   };
 
   const handleSetNewPassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setUserData(() => ({ ...userData, 'newPassword': event.target.value.trim() }));
-    setError('');
+    removeSignInError();
+    removeSignInSuccess();
   };
 
   const handleConfirmPassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setUserData(() => ({ ...userData, 'confirmedPassword': event.target.value.trim() }));
-    setError('');
+    removeSignInError();
+    removeSignInSuccess();
   };
 
   const signInAccount = (): void => {
@@ -59,27 +73,27 @@ const SignInPage: React.FC<SignInPageProps> = ({language,langData}) => {
 
     switch (true) {
       case (!firstName || firstName.trim().length < minNameLength || firstName[0].match(/\d/)): {
-        setError(`${langData[language].signinPage_invalid_name}`);
+        setSignInError(`${langData[language].signinPage_invalid_name}`);
         break;
       }
       case (!lastName || lastName.trim().length < minNameLength || lastName[0].match(/\d/)): {
-        setError(`${langData[language].signinPage_invalid_LastName}`);
+        setSignInError(`${langData[language].signinPage_invalid_LastName}`);
         break;
       }
       case (!email || email.trim().length < minNameLength || !email.includes('@') || !email.split('@')[1].includes('.')): {
-        setError(`${langData[language].signinPage_invalid_emale}`);
+        setSignInError(`${langData[language].signinPage_invalid_emale}`);
         break;
       }
       case (!newPassword.match(regExp)): {
-        setError(`${langData[language].signinPage_invalid_password}`);
+        setSignInError(`${langData[language].signinPage_invalid_password}`);
         break;
       }
       case (confirmedPassword !== newPassword): {
-        setError(`${langData[language].signinPage_invalid_password_confirme}`);
+        setSignInError(`${langData[language].signinPage_invalid_password_confirme}`);
         break;
       }
       default: {
-        // authentification
+        onFetch(firstName, lastName, newPassword, email);
       }
     }
   }
@@ -124,7 +138,7 @@ const SignInPage: React.FC<SignInPageProps> = ({language,langData}) => {
         {langData[language].signinPage_invalid_password}
         </FormFieldCaption>
         {isError && <AlertError>{isError}</AlertError>}
-        {/* {isSuccess && <AlertSuccess>{isSuccess}</AlertSuccess>} */}
+        {isSuccess && <AlertSuccess>{isSuccess}</AlertSuccess>}
         <FormField>
           <InputText
             type={isOpenConfirmPassword ? "text" : "password"}
