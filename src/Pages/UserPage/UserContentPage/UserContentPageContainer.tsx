@@ -14,6 +14,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onFetch: (mail, username, lastname, photoUrl) => {
+    if(!mail){
+      dispatch(fetchUpdateError(mail));
+      return;
+    }
     fetch(`https://api-travel-app.herokuapp.com/auth/${mail}`, {
       method: 'PUT',
       body: JSON.stringify({
