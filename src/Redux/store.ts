@@ -4,6 +4,7 @@ import languageReducer from './Language/reducer';
 import {CountryPageReducer} from './CountryPage/reducer';
 import { countriesReducer } from './GetApi/reducer';
 import AuthReducer from './Auth/reducer';
+import UpdateReducer from './UpdateAuth/reducer';
 
 const reducers = combineReducers({
   mainPage: mainPageReducer,
@@ -11,17 +12,14 @@ const reducers = combineReducers({
   countryPage: CountryPageReducer,
   getCountries: countriesReducer,
   auth: AuthReducer,
+  update: UpdateReducer,
 });
 
 const persistedState = ()=>{
- const reduxStateCountry =localStorage.getItem('reduxStateCountries')
- const reduxStateLanguage =localStorage.getItem('reduxStateLanguage')
+ const reduxState =localStorage.getItem('reduxState')
 
-  if (typeof reduxStateCountry === 'string' && typeof reduxStateLanguage === 'string') {
-    return ({
-      getCountries:JSON.parse(reduxStateCountry),
-      language:JSON.parse(reduxStateLanguage)
-    })
+  if (typeof reduxState === 'string') {
+    return JSON.parse(reduxState);
   }
    return ({})
 }
@@ -32,8 +30,7 @@ const persistedState = ()=>{
 )
 
 store.subscribe(() => {
-  localStorage.setItem('reduxStateCountries', JSON.stringify(store.getState().getCountries));
-  localStorage.setItem('reduxStateLanguage', JSON.stringify(store.getState().language));
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()));
 })
 
 export default store;

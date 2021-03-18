@@ -62,7 +62,7 @@ const UserView = ({language, name, lastname, photoUrl, logout}:any) => {
 
         </DialogContent>
       </Dialog>
-        <Avatar alt={photoUrl} className={s.large}/>
+        <Avatar src={photoUrl} className={s.large}/>
         <h4 className={s.aaa}>{name} {lastname}</h4>
         <SettingsIcon className={s.settings} onClick={()=>setUserBar(!showUserBar)}/>
     </div>
