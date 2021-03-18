@@ -4,6 +4,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import langData from '../../../langData/langData.json'
+import UserViewContainer from '../UserView/UserViewContainer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,20 +21,20 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Login: React.FC = ({language}:any) => {
+const Login: React.FC = ({isLogIn, language}:any) => {
   const styles = useStyles();
-  return (
+  return !isLogIn ? (
     <Paper className={styles.paper_login}>
       <div className={styles.root}>
         <Link to="/authorization">
           <Button variant="contained">{langData[language].mainPage_Login_sign_in}</Button>
         </Link>
-        <Link to="/reset">
+        <Link to="/authorization/registration">
           <Button variant="contained">{langData[language].mainPage_Login_sign_up}</Button>
         </Link>
       </div>
     </Paper>
-  );
+  ) : <UserViewContainer/>;
 };
 
 export default Login;

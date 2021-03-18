@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import { Form, InputText, FormField, TogglePassword, InputBtnSignIn } from '../../../Components/styledComponents';
+import { NavLink, useHistory } from 'react-router-dom';
+import {
+  Form,
+  InputText,
+  FormField,
+  TogglePassword,
+  InputBtnSignIn,
+  AlertError,
+} from '../../../Components/styledComponents';
 
 const InputPassword = styled(InputText)`
   padding-right: 48px;
@@ -22,16 +29,18 @@ const FormOptions = styled.div`
   }
 `;
 
-interface LogInPageProps {
-  onToggleErrorComponent: (isError: boolean) => void;
-  language:string,
-  langData:any,
-}
+// interface LogInPageProps {
+//   onToggleErrorComponent: (isError: boolean) => void;
+//   language:string,
+//   langData:any,
+// }
 
-const LogInPage: React.FC<LogInPageProps> = ({ onToggleErrorComponent,language,langData }) => {
+const LogInPage = ({ onToggleErrorComponent,language,langData,onFetch, isError,removeLogInError,isLogIn, clearState }:any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isShow, setShow] = useState(false);
+
+  useEffect(()=> () => clearState(), [clearState])
 
   const toggleVisiblePassword = (): void => {
     setShow((state) => (!state));
@@ -39,16 +48,19 @@ const LogInPage: React.FC<LogInPageProps> = ({ onToggleErrorComponent,language,l
 
   const handleChangeInputPassword = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
     setPassword(target.value);
+    removeLogInError();
     onToggleErrorComponent(false);
   };
 
   const handleChangeInputEmail = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(target.value);
+    removeLogInError();
     onToggleErrorComponent(false);
   };
 
   const logInAccount = (event: React.ChangeEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    onFetch(email, password)
   };
 
   const toggleChecked = (): void => {
@@ -61,9 +73,18 @@ const LogInPage: React.FC<LogInPageProps> = ({ onToggleErrorComponent,language,l
   //     this.props.toggleEnterUser(!!user);
   //   });
   // }
+  const history = useHistory();
+  useEffect(()=>{
+
+    if(isLogIn) {
+      history.push('/');
+    }
+  }, [isLogIn, history])
 
   return (
+      <>
     <Form onSubmit={logInAccount}>
+      {isError && <AlertError>{isError}</AlertError>}
       <FormField>
         <InputText
           tab-index="0"
@@ -114,6 +135,7 @@ const LogInPage: React.FC<LogInPageProps> = ({ onToggleErrorComponent,language,l
         />
       </FormOptions>
     </Form>
+      </>
   );
 };
 

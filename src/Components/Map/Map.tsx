@@ -17,12 +17,10 @@ L.Marker.prototype.options.icon = L.icon({
 });
 
 const Map = ({coordinates, iso}:any) => {
-  console.log(iso)
   const [data, setData] = useState({});
   const [isFullscreen, setFullScreen] = useState(false);
   useEffect(()=>{
     setData(mapData.features.find(({ id }) => id === iso));
-    console.log(data);
   }, [iso, data])
   return (
     <>

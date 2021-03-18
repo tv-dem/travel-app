@@ -56,9 +56,10 @@ const UserBarLink = styled(NavLink)`
 interface UserBarProps {
   language: string;
   langData: any;
+  logout: any;
 }
 
-const UserBar: React.FC<UserBarProps> = ({language,langData}) => (
+const UserBar: React.FC<UserBarProps> = ({language,langData, logout}) => (
   <WrapperModal>
     <UserBarLink to="/user/account">
       <span className="user-bar__icon">
@@ -66,7 +67,7 @@ const UserBar: React.FC<UserBarProps> = ({language,langData}) => (
       </span>
       {langData[language].userViewPage_userBar_profile}
       </UserBarLink>
-    <ExitButton onClick={() => console.log('log out backend')}>
+    <ExitButton onClick={logout}>
       <IconLogOut />
       {langData[language].userViewPage_userBar_exit}
       </ExitButton>

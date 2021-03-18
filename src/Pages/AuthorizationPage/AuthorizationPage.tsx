@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import './AuthorizationPage.scss';
 import styled from 'styled-components';
-import LogInPage from './LogInPage/LogInPage';
-import SignInPage from './SignInPage/SignInPage';
+// import LogInPage from './LogInPage/LogInPage';
 import {
   SocialBefore,
   AlertError,
@@ -15,6 +14,8 @@ import {
 } from '../../Components/styledComponents';
 import { ReactComponent as ArrowLeft } from '../../public/arrow-left.svg';
 import langData from '../../langData/langData.json';
+import LogInContainer from './LogInPage/LogInContainer';
+import SignInContainer from './SignInPage/SiginInContainer';
 
 const Header = styled.div`
   @media only screen and (max-width: 767px) and (min-width: 0) {
@@ -31,7 +32,6 @@ const AuthorizationPage = ({ language }) => {
 
   useEffect(() => {
     addBodyClass('body');
-
     return () => {
       removeBodyClass('body');
     };
@@ -72,15 +72,15 @@ const AuthorizationPage = ({ language }) => {
               exact
               path="/authorization"
               render={() => (
-                <LogInPage
+                <LogInContainer
                   onToggleErrorComponent={toggleErrorComponent}
                   language={language}
                   langData={langData}
                 />
               )}
             />
-            <Route path="/authorization/registration"  render={() => 
-                <SignInPage               
+            <Route path="/authorization/registration"  render={() =>
+                <SignInContainer
                   language={language}
                   langData={langData}
                 />
