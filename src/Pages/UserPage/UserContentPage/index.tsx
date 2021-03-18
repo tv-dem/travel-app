@@ -77,18 +77,15 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay, langua
     const minNameLength = 3;
     if (!stateUser.fName || stateUser.fName.trim().length < minNameLength || stateUser.fName[0].match(/\d/)) {
       setError(`${langData[language].userPage_userContentPage_invalid_name}`);
-    }
-    if (!stateUser.lName || stateUser.lName.trim().length < minNameLength || stateUser.lName[0].match(/\d/)) {
+    } else if (!stateUser.lName || stateUser.lName.trim().length < minNameLength || stateUser.lName[0].match(/\d/)) {
       setError(`${langData[language].userPage_userContentPage_invalid_LastName}`);
-    }
-    if (!stateUser['e-mail'] || stateUser['e-mail'].trim().length < minNameLength || !stateUser['e-mail'].includes('@') || !stateUser['e-mail'].split('@')[1].includes('.')) {
+    } else if (!stateUser['e-mail'] || stateUser['e-mail'].trim().length < minNameLength || !stateUser['e-mail'].includes('@') || !stateUser['e-mail'].split('@')[1].includes('.')) {
       setError(`${langData[language].userPage_userContentPage_invalid_emale}`);
     } else {
       onFetch(stateUser['e-mail'], stateUser.fName, stateUser.lName, isPhoto);
     }
 
     setSuccess(`${langData[language].userPage_userContentPage_persInf_changed}`);
-    setPhoto('');
 
     setTimeout(() => {
       setSuccess('');

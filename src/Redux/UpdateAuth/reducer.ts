@@ -1,4 +1,4 @@
-import { FETCH_UPDATE_ERROR } from './actionTypes';
+import { FETCH_UPDATE_ERROR, FETCH_UPDATE_PASSWORD_SUCCESS } from './actionTypes';
 import StateT from './interface';
 
 const initState:StateT = {
@@ -7,6 +7,7 @@ const initState:StateT = {
   email: '',
   photoUrl: '',
   err: '',
+  message: '',
 }
 
 const updateReducer = (state = initState, action): StateT => {
@@ -15,7 +16,14 @@ const updateReducer = (state = initState, action): StateT => {
     case FETCH_UPDATE_ERROR: {
       return {
         ...state, 
-        err: action.payload.err
+        err: action.payload
+      }
+    }
+
+    case FETCH_UPDATE_PASSWORD_SUCCESS: {
+      return {
+        ...state, 
+        message: action.payload
       }
     }
 

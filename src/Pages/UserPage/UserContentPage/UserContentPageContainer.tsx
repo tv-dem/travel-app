@@ -32,10 +32,6 @@ const mapDispatchToProps = (dispatch) => ({
       return res.json();
     })
       .then(() => {
-        console.log(mail,
-          username,
-          lastname,
-          photoUrl);
         dispatch(fetchUpdateSuccess(
           username,
           lastname,

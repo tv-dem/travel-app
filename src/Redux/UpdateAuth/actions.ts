@@ -1,13 +1,8 @@
-import { FETCH_UPDATE_ERROR } from './actionTypes';
+import { FETCH_UPDATE_ERROR, FETCH_UPDATE_PASSWORD_SUCCESS } from './actionTypes';
 
-export const fetchUpdateSuccess = (username: string, lastname: string, email: string, photoUrl: string ) => ({
-  type: 'UPDATE_SUCCESS',
-  payload: {
-    username,
-    lastname,
-    email,
-    photoUrl,
-  },
+export const fetchUpdatePasswordSuccess = (message: string ) => ({
+  type: FETCH_UPDATE_PASSWORD_SUCCESS,
+  payload: message,
 });
 
 export const fetchUpdateError = (err: any) => ({

@@ -4,4 +4,5 @@ export default interface StateT {
   email: string;
   photoUrl: string;
   err?: string; 
+  message?: string; 
 } 

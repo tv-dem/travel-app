@@ -25,12 +25,18 @@ interface UserPasswordPageProps {
   toggleDisplay: () => void;
   language: string;
   langData: any;
+  mail: string;
+  onFetch: (mail: any, password: string) => void,
+  message: string,
 }
 
 const UserPasswordPage: React.FC<UserPasswordPageProps> = ({
   toggleDisplay,
   language,
   langData,
+  mail,
+  onFetch,
+  message
 }) => {
   const [isOpenPassword, setOpenPassword] = useState(false);
   const [isError, setError] = useState('');
@@ -64,25 +70,18 @@ const UserPasswordPage: React.FC<UserPasswordPageProps> = ({
 
     if (!newPassword.match(regExp)) {
       setError(`${langData[language].userPage_passwordPage_invalid_password}`);
-    }
-
-    if (confirmedPassword !== newPassword) {
+    } else if (confirmedPassword !== newPassword) {
       setError(
         `${langData[language].userPage_passwordPage_invalid_password_confirme}`,
       );
       setSuccess(
         `${langData[language].userPage_passwordPage_password_changed}`,
       );
+    } else {
+      onFetch(mail, newPassword);
+
+      setTimeout(() => setSuccess(message), 3000);
     }
-
-    // update password backend
-    // user.updatePassword(newPassword).then(() => {
-    // setSuccess('Password changed');
-
-    //   setTimeout(() => setSuccess(''), 1000);
-    // }).catch((error) => {
-    //   setError(error.message);
-    // });
   };
 
   return (

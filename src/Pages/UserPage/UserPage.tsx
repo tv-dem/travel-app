@@ -4,10 +4,9 @@ import { Switch, Route } from 'react-router-dom';
 import { BackButton } from '../../Components/styledComponents';
 import ProfileMenu from './ProfileMenu';
 import UserContentPage from './UserContentPage/UserContentPageContainer';
-import UserPasswordPage from './UserPasswordPage';
+import UserPasswordPage from './UserPasswordPage/UserPasswordPageContainer';
 import { ReactComponent as ArrowLeft } from '../../public/arrow-left.svg';
 import langData from '../../langData/langData.json';
-
 
 const Header = styled.header`
   display: block;
