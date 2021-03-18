@@ -4,6 +4,7 @@ import languageReducer from './Language/reducer';
 import {CountryPageReducer} from './CountryPage/reducer';
 import { countriesReducer } from './GetApi/reducer';
 import AuthReducer from './Auth/reducer';
+import UpdateReducer from './UpdateAuth/reducer';
 
 const reducers = combineReducers({
   mainPage: mainPageReducer,
@@ -11,6 +12,7 @@ const reducers = combineReducers({
   countryPage: CountryPageReducer,
   getCountries: countriesReducer,
   auth: AuthReducer,
+  update: UpdateReducer,
 });
 
 const persistedState = ()=>{

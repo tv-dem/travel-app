@@ -4,6 +4,7 @@ import {
   FETCH_SIGN_IN_SUCCESS,
   REMOVE_LOG_IN_ERROR,
   FETCH_SIGN_IN_ERROR, REMOVE_SIGN_IN_ERROR, SET_SIGN_IN_ERROR, REMOVE_SIGN_IN_SUCCESS, LOGOUT, CLEAR_MESSAGES,
+  FETCH_UPDATE_SUCCESS,
 } from './actionsTypes';
 
 type StateType = {
@@ -67,6 +68,19 @@ const AuthReducer = (state = initState, action) => {
         token,} = action;
       return { ...state, userName: username, lastName: lastname, eMail: email, photoUrl, isLogIn: token };
     }
+
+    case FETCH_UPDATE_SUCCESS: {
+      const {username, lastname, email, photoUrl } = action.payload;
+
+      return {
+        ...state,
+        userName: username,
+        lastName: lastname,
+        eMail: email,
+        photoUrl,
+      }
+    }
+
     default:
       return state;
   }

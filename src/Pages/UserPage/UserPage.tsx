@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 import { BackButton } from '../../Components/styledComponents';
 import ProfileMenu from './ProfileMenu';
-import UserContentPage from './UserContentPage';
+import UserContentPage from './UserContentPage/UserContentPageContainer';
 import UserPasswordPage from './UserPasswordPage';
 import { ReactComponent as ArrowLeft } from '../../public/arrow-left.svg';
 import langData from '../../langData/langData.json';
@@ -62,7 +62,7 @@ interface UserPageProps {
   language: string;
 }
 
-const UserPage: React.FC<UserPageProps> = ({language}) => {
+const UserPage: React.FC<UserPageProps> = ({ language }) => {
   const addBodyClass = (className: string): void => document.body.classList.add(className);
   const removeBodyClass = (className: string): void => document.body.classList.remove(className);
   const [isDisplay, setDisplay] = useState(true);

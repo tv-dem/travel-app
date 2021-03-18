@@ -37,74 +37,55 @@ const ButtonCancel = styled(ButtonSave)`
 
 interface UserContentPageProps {
   toggleDisplay: () => void;
-  language:string,
-  langData:any
+  language: string,
+  langData: any,
+  mail: string,
+  userName: string,
+  lastName: string,
+  photoUrl: string,
+  onFetch: (mail: any, username: any, lastname: any, photoUrl: any) => void,
+  err: string,
 }
 
-const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay, language, langData }) => {
-  // const storageRef = storage().ref().child(user?.email + '/profile.jpg');
-
-
+const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay, language, langData, mail, userName, lastName, photoUrl, onFetch, err }) => {
   const [stateUser, setStateUser] = useState({
-    'firstName': '',
-    'lastName': '',
-    'email': '',
+    'fName': userName,
+    'lName': lastName,
+    'e-mail': mail,
   });
 
-  const [isPhoto, setPhoto] = useState('');
-  const [isError, setError] = useState('');
+  const [isPhoto, setPhoto] = useState(photoUrl);
+  const [isError, setError] = useState(err);
   const [isSuccess, setSuccess] = useState('');
 
-  // const downloadData = (): void => {
-  //   storageRef.getDownloadURL()
-  //     .then((url) => {
-  // setPhoto('');
-  //     })
-  //     .catch(() => {
-  //       console.warn(`First enter`);
-  //     });
-  // };
-
-  // downloadData();
-
   const changeName = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setStateUser(() => ({ ...stateUser, 'firstName': event.target.value.trim() }));
+    setStateUser(() => ({ ...stateUser, 'fName': event.target.value.trim() }));
     setError('');
   };
 
   const changeLastName = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setStateUser(() => ({ ...stateUser, ...{ 'lastName': event.target.value.trim() } }));
+    setStateUser(() => ({ ...stateUser, ...{ 'lName': event.target.value.trim() } }));
     setError('');
   };
 
   const changeEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setStateUser(() => ({ ...stateUser, ...{ 'email': event.target.value.trim() } }));
+    setStateUser(() => ({ ...stateUser, ...{ 'e-mail': event.target.value.trim() } }));
     setError('');
   };
 
   const handleBtnSaveClick = (): void => {
     const minNameLength = 3;
-    if (!stateUser.firstName || stateUser.firstName.trim().length < minNameLength || stateUser.firstName[0].match(/\d/)) {
+    if (!stateUser.fName || stateUser.fName.trim().length < minNameLength || stateUser.fName[0].match(/\d/)) {
       setError(`${langData[language].userPage_userContentPage_invalid_name}`);
     }
-    if (!stateUser.lastName || stateUser.lastName.trim().length < minNameLength || stateUser.lastName[0].match(/\d/)) {
+    if (!stateUser.lName || stateUser.lName.trim().length < minNameLength || stateUser.lName[0].match(/\d/)) {
       setError(`${langData[language].userPage_userContentPage_invalid_LastName}`);
     }
-    if (!stateUser.email || stateUser.email.trim().length < minNameLength || !stateUser.email.includes('@') || !stateUser.email.split('@')[1].includes('.')) {
+    if (!stateUser['e-mail'] || stateUser['e-mail'].trim().length < minNameLength || !stateUser['e-mail'].includes('@') || !stateUser['e-mail'].split('@')[1].includes('.')) {
       setError(`${langData[language].userPage_userContentPage_invalid_emale}`);
+    } else {
+      onFetch(stateUser['e-mail'], stateUser.fName, stateUser.lName, isPhoto);
     }
-
-    // Upadate info BackEnd
-    // user.updateProfile({
-    //   displayName: `${stateUser.firstName} ${stateUser.lastName}`,
-    //   photoURL: `${isPhoto}`,
-    // }).catch((error) => {
-    //   setError(error.message);
-    // });
-
-    // user.updateEmail(`${stateUser.email}`).catch((error) => {
-    //   setError(error.message);
-    // });
 
     setSuccess(`${langData[language].userPage_userContentPage_persInf_changed}`);
     setPhoto('');
@@ -117,9 +98,9 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay, langua
 
   const handleBtnCancelClick = (): void => {
     setStateUser({
-      'firstName': '',
-      'lastName': '',
-      'email': ''
+      'fName': '',
+      'lName': '',
+      'e-mail': ''
     });
     toggleDisplay();
   };
@@ -143,16 +124,8 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay, langua
         byteNumbers[i] = byteCharacters.charCodeAt(i);
       }
 
-      // const byteArray = new Uint8Array(byteNumbers);
-
-      // const blob = new Blob([byteArray], { type: 'text/plain' });
-      // const imageUrl = URL.createObjectURL(blob, { type: 'text/plain' });
-
-      // Create a Storage Ref w/ username
-      // const storageRef = storage().ref().child(user?.email + '/profile.jpg');
-
       // Upload file
-      // storageRef.put(byteArray).then(() => setPhoto(reader.result));
+      setPhoto(reader.result as string);
     };
     reader.readAsDataURL(selectedFile);
   }
@@ -162,11 +135,11 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay, langua
       <UserPhotoWrapper>
         <UserPhoto
           src={isPhoto}
-          alt={`${stateUser.firstName} ${langData[language].userPage_userContentPage_photo}`}
+          alt={`${stateUser.fName} ${langData[language].userPage_userContentPage_photo}`}
         />
       </UserPhotoWrapper>
       <ContentTitle>
-      {langData[language].userPage_userContentPage_personal_info}
+        {langData[language].userPage_userContentPage_personal_info}
       </ContentTitle>
       <UserForm>
         <FormField>
@@ -175,7 +148,7 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay, langua
             id='firstName'
             placeholder={langData[language].userPage_userContentPage_placeholder_name}
             name='firstName'
-            value={stateUser.firstName}
+            value={stateUser.fName}
             onChange={changeName}
           />
         </FormField>
@@ -186,7 +159,7 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay, langua
             id='lastName'
             placeholder={langData[language].userPage_userContentPage_placeholder_lastName}
             name='lastName'
-            value={stateUser.lastName}
+            value={stateUser.lName}
             onChange={changeLastName}
           />
         </FormField>
@@ -196,8 +169,9 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay, langua
             id='user-email'
             placeholder={langData[language].userPage_userContentPage_placeholder_emale}
             name='email'
-            value={stateUser.email}
+            value={stateUser['e-mail']}
             onChange={changeEmail}
+            disabled
           />
         </FormField>
         {isSuccess && <AlertSuccess>{isSuccess}</AlertSuccess>}
@@ -218,7 +192,7 @@ const UserContentPage: React.FC<UserContentPageProps> = ({ toggleDisplay, langua
             value='Save'
             onClick={handleBtnSaveClick}
           >
-           {langData[language].userPage_userContentPage_btn_save}
+            {langData[language].userPage_userContentPage_btn_save}
           </ButtonSave>
           <ButtonCancel
             type='button'

@@ -9,6 +9,7 @@ import {
   REMOVE_SIGN_IN_SUCCESS,
   LOGOUT,
   CLEAR_MESSAGES,
+  FETCH_UPDATE_SUCCESS,
 } from './actionsTypes';
 
 export const logout = () => ({
@@ -65,4 +66,12 @@ export const fetchSignInError = (err) => ({
   err
 })
 
-
+export const fetchUpdateSuccess = (username: string, lastname: string, email: string, photoUrl: string ) => ({
+  type: FETCH_UPDATE_SUCCESS,
+  payload: {
+    username,
+    lastname,
+    email,
+    photoUrl,
+  },
+});
