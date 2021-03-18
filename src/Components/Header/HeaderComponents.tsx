@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.div`
+    height: 15%;
     padding: 10px;
     display: flex;
     justify-content: space-around;
