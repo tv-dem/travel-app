@@ -1,14 +1,6 @@
 .content-container{
   margin: 10px;
-  height: 75%;
+  min-height: 75vh;
   display: flex;
   justify-content: center;
-overflow-y: scroll;
-}
-
-#root {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
 }

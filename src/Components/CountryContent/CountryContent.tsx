@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import {Redirect} from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
@@ -113,6 +113,10 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const CountryContent = ({ currentCountry, fetchPlaces, currentLan, language }) => {
 
+  const history = useHistory();
+  if(!currentCountry){
+    history.push('/');
+  }
   const [{name,capital,description}]= currentCountry.localizations.filter(lan=>lan.lang===language)
   const classes = useStyles();
 
